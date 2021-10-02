@@ -558,14 +558,8 @@ var _hud_manifest := {
 
 var _welcome_panel_manifest := {
     items = [
-        ["*Auto nav*", "click"],
-        ["Inspect graph", "ctrl + click (x2)"],
-        ["Walk/Climb", "arrow key / wasd"],
-        ["Jump", "space / x"],
-        ["Grab surface", "c"],
-        ["Dash", "z"],
-        ["Zoom in/out", "ctrl + =/-"],
-        ["Pan", "ctrl + arrow key"],
+        ["Shake", "TODO"],
+        ["Drop boulder", "TODO"],
     ],
     header_color = [
     ],
@@ -589,7 +583,7 @@ var _screen_manifest := {
         preload("res://addons/scaffolder/src/gui/screens/settings_screen.tscn"),
         preload("res://addons/scaffolder/src/gui/screens/third_party_licenses_screen.tscn"),
         preload("res://addons/surfacer/src/gui/screens/precompute_platform_graphs_screen.tscn"),
-        preload("res://addons/surfacer/src/gui/screens/surfacer_loading_screen.tscn"),
+        preload("res://src/gui/loading_screen.tscn"),
         preload("res://addons/scaffolder/src/gui/screens/confirm_data_deletion_screen_local.tscn"),
 #        preload("res://addons/scaffolder/src/gui/screens/scaffolder_loading_screen.tscn"),
 #        preload("res://addons/scaffolder/src/gui/screens/confirm_data_deletion_screen_with_analytics.tscn"),
@@ -654,8 +648,7 @@ var _gui_manifest := {
     main_menu_image_scene = preload("res://src/gui/loading_image.tscn"),
     game_over_image_scene = preload("res://src/gui/loading_image.tscn"),
     loading_image_scene = preload("res://src/gui/loading_image.tscn"),
-    welcome_panel_scene = \
-            preload("res://addons/scaffolder/src/gui/welcome_panel.tscn"),
+    welcome_panel_scene = preload("res://src/gui/ld_welcome_panel.tscn"),
     debug_panel_scene = \
             preload("res://addons/scaffolder/src/gui/debug_panel.tscn"),
     
@@ -701,25 +694,25 @@ var _additional_metric_keys := [
 var _surfacer_debug_params := {}
 
 var _annotations_manifest := {
-    is_player_preselection_trajectory_shown = true,
+    is_player_preselection_trajectory_shown = false,
     
     is_player_slow_mo_trajectory_shown = false,
-    is_player_non_slow_mo_trajectory_shown = true,
+    is_player_non_slow_mo_trajectory_shown = false,
     is_player_previous_trajectory_shown = false,
-    is_player_navigation_destination_shown = true,
+    is_player_navigation_destination_shown = false,
     is_player_nav_pulse_shown = false,
     
-    is_npc_slow_mo_trajectory_shown = true,
+    is_npc_slow_mo_trajectory_shown = false,
     is_npc_non_slow_mo_trajectory_shown = false,
     is_npc_previous_trajectory_shown = false,
     is_npc_navigation_destination_shown = false,
-    is_npc_nav_pulse_shown = true,
+    is_npc_nav_pulse_shown = false,
     
     does_player_nav_pulse_grow = false,
-    is_player_prediction_shown = true,
+    is_player_prediction_shown = false,
     
-    does_npc_nav_pulse_grow = true,
-    is_npc_prediction_shown = true,
+    does_npc_nav_pulse_grow = false,
+    is_npc_prediction_shown = false,
     
     nav_selection_prediction_opacity = 0.5,
     nav_selection_prediction_tween_duration = 0.15,
