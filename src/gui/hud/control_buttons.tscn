@@ -1,0 +1,66 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://src/gui/hud/control_buttons.gd" type="Script" id=1]
+[ext_resource path="res://addons/scaffolder/src/gui/style_box_flat_scalable.gd" type="Script" id=2]
+[ext_resource path="res://addons/scaffolder/src/gui/widgets/scaffolder_texture_button.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/images/gui/tremor_button_hover.png" type="Texture" id=4]
+[ext_resource path="res://assets/images/gui/tremor_button_normal.png" type="Texture" id=5]
+[ext_resource path="res://assets/images/gui/boulder_button_normal.png" type="Texture" id=6]
+[ext_resource path="res://assets/images/gui/boulder_button_disabled.png" type="Texture" id=7]
+[ext_resource path="res://assets/images/gui/boulder_button_hover.png" type="Texture" id=8]
+[ext_resource path="res://assets/images/gui/boulder_button_active.png" type="Texture" id=9]
+[ext_resource path="res://assets/images/gui/tremor_button_active.png" type="Texture" id=10]
+[ext_resource path="res://assets/images/gui/tremor_button_disabled.png" type="Texture" id=11]
+
+[sub_resource type="StyleBoxFlat" id=38]
+bg_color = Color( 1, 1, 1, 0 )
+script = ExtResource( 2 )
+
+[node name="ControlButtons" type="PanelContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 1
+custom_styles/panel = SubResource( 38 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+margin_right = 1024.0
+margin_bottom = 768.0
+custom_constants/separation = 4
+
+[node name="BoulderButton" parent="HBoxContainer" instance=ExtResource( 3 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 336.0
+margin_right = 96.0
+margin_bottom = 432.0
+rect_min_size = Vector2( 96, 96 )
+texture_normal = ExtResource( 6 )
+texture_pressed = ExtResource( 9 )
+texture_hover = ExtResource( 8 )
+texture_disabled = ExtResource( 7 )
+texture_scale = Vector2( 3, 3 )
+size_override = Vector2( 96, 96 )
+disabled = true
+
+[node name="TremorButton" parent="HBoxContainer" instance=ExtResource( 3 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 100.0
+margin_top = 336.0
+margin_right = 196.0
+margin_bottom = 432.0
+rect_min_size = Vector2( 96, 96 )
+texture_normal = ExtResource( 5 )
+texture_pressed = ExtResource( 10 )
+texture_hover = ExtResource( 4 )
+texture_disabled = ExtResource( 11 )
+texture_scale = Vector2( 3, 3 )
+size_override = Vector2( 96, 96 )
+disabled = true
+
+[connection signal="pressed" from="HBoxContainer/BoulderButton" to="." method="_on_BoulderButton_pressed"]
+[connection signal="pressed" from="HBoxContainer/TremorButton" to="." method="_on_TremorButton_pressed"]

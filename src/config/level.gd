@@ -170,6 +170,9 @@ func _physics_process(_delta: float) -> void:
             session._boulders,
             session._next_boulder_index)
     
+    var is_tremor_button_enabled := tremor_cooldown_progress >= 1.0
+    var is_boulder_button_enabled := boulder_cooldown_progress >= 1.0
+    
     Sc.gui.hud.hero_indicators.update_indicator(
             "bobbit",
             bobbit_cooldown_progress,
@@ -199,6 +202,13 @@ func _physics_process(_delta: float) -> void:
             "boulder",
             boulder_cooldown_progress,
             boulder_remaining_count)
+    
+    Sc.gui.hud.control_buttons.set_button_enabled(
+            "tremor",
+            is_tremor_button_enabled)
+    Sc.gui.hud.control_buttons.set_button_enabled(
+            "boulder",
+            is_boulder_button_enabled)
     
     session._hero_count = \
             bobbit_active_count + \
@@ -279,10 +289,37 @@ func _spawn_character(spawn_event_config: Dictionary) -> void:
 
 
 func _trigger_wave(wave_event_config: Dictionary) -> void:
-    # FIXME: ---------------------
-    pass
-    
     eye.trigger_narrow()
+
+
+func trigger_tremor() -> void:
+    # FIXME: ----------------------------
+    # - Add logic to displace heroes.
+    #   - Decide whether they should be ko'd instantly, or if they have a chance
+    #     to land on a nearby platform.
+    # - Add shake animation.
+    #   - Create a copy of the tilemap.
+    #   - Give this a higher z-index.
+    #   - Disable collidability on this copy.
+    #   - Make the other tilemap invisible, but still active for collisions.
+    #   - Leave this duplicate tilemap setup persisting throughout the entire
+    #     level.
+    #   - Can then show shake animation without actually changing collision
+    #     boundaries.
+    pass
+    session.last_tremor_time = Sc.time.get_scaled_play_time()
+    Sc.gui.hud.control_buttons.set_button_enabled("tremor", false)
+
+
+func trigger_boulder_selection_mode() -> void:
+    # FIXME: ----------------------------
+    # - Tap to choose a platform.
+    # - Use SurfaceFinder to get the best platform close to the tap.
+    # - Include a max-valid-distance threshold.
+    # - Highlight on finger down as a stretch goal?
+    pass
+    session.last_boulder_time = Sc.time.get_scaled_play_time()
+    Sc.gui.hud.control_buttons.set_button_enabled("boulder", false)
 
 
 func _update_ring_bearer() -> void:

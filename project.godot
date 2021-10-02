@@ -344,6 +344,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/surfacer/src/gui/legend/legend_items/continuous_edge_trajectory_legend_item.gd"
 }, {
+"base": "ScaffolderPanelContainer",
+"class": "ControlButtons",
+"language": "GDScript",
+"path": "res://src/gui/hud/control_buttons.gd"
+}, {
 "base": "Reference",
 "class": "ControlRow",
 "language": "GDScript",
@@ -2192,6 +2197,7 @@ _global_script_class_icons={
 "ConfirmDataDeletionScreenLocal": "",
 "ConfirmDataDeletionScreenWithAnalytics": "",
 "ContinuousEdgeTrajectoryLegendItem": "",
+"ControlButtons": "",
 "ControlRow": "",
 "CooldownIndicator": "",
 "CrashReporter": "",

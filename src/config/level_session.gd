@@ -25,6 +25,7 @@ var _hero_count := 0
 var _is_hero_spawning_finished := false
 
 var last_tremor_time := -INF
+var last_boulder_time := -INF
 
 var knock_off_count := 0
 
@@ -50,6 +51,9 @@ func reset(id: String) -> void:
     
     _hero_count = 0
     _is_hero_spawning_finished = false
+    
+    last_tremor_time = -INF
+    last_boulder_time = -INF
     
     knock_off_count = 0
 
