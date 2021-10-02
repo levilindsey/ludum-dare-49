@@ -1,0 +1,44 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://src/gui/hud/hero_indicators.gd" type="Script" id=1]
+[ext_resource path="res://src/gui/hud/cooldown_indicator.tscn" type="PackedScene" id=2]
+
+[node name="HeroIndicators" type="VBoxContainer"]
+margin_left = 12.0
+margin_top = 1975.0
+margin_right = 204.0
+margin_bottom = 2023.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+custom_constants/separation = 4
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="WaveCooldown" parent="." instance=ExtResource( 2 )]
+label = "Waves"
+
+[node name="BobbitCooldown" parent="." instance=ExtResource( 2 )]
+visible = false
+margin_top = 132.0
+margin_bottom = 180.0
+label = "Bobbits"
+
+[node name="DwarfCooldown" parent="." instance=ExtResource( 2 )]
+visible = false
+margin_top = 264.0
+margin_bottom = 312.0
+label = "Dwarves"
+
+[node name="ElfCooldown" parent="." instance=ExtResource( 2 )]
+visible = false
+margin_top = 396.0
+margin_bottom = 444.0
+label = "Elves"
+
+[node name="WizardCooldown" parent="." instance=ExtResource( 2 )]
+visible = false
+margin_top = 528.0
+margin_bottom = 576.0
+label = "Wizards"

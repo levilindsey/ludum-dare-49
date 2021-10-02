@@ -18,7 +18,7 @@ var level_manifest := {
         platform_graph_character_names = [
             "bobbit",
         ],
-        shake_cooldown_period = 4.0,
+        tremor_cooldown_period = 4.0,
         schedule = [
             {type = "wave", time = 1.0},
             {type = "bobbit", time = 1.0, side = "l"},

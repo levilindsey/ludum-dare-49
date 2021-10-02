@@ -349,6 +349,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/scaffolder/src/gui/control_row_list/control_row.gd"
 }, {
+"base": "ScaffolderPanelContainer",
+"class": "CooldownIndicator",
+"language": "GDScript",
+"path": "res://src/gui/hud/cooldown_indicator.gd"
+}, {
 "base": "Node",
 "class": "CrashReporter",
 "language": "GDScript",
@@ -819,6 +824,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/characters/hero.gd"
 }, {
+"base": "VBoxContainer",
+"class": "HeroIndicators",
+"language": "GDScript",
+"path": "res://src/gui/hud/hero_indicators.gd"
+}, {
 "base": "TextControlRow",
 "class": "HighScoreControlRow",
 "language": "GDScript",
@@ -838,6 +848,11 @@ _global_script_classes=[ {
 "class": "HsvRangeColorParams",
 "language": "GDScript",
 "path": "res://addons/scaffolder/src/annotators/color_params/hsv_range_color_params.gd"
+}, {
+"base": "SurfacerHud",
+"class": "Hud",
+"language": "GDScript",
+"path": "res://src/gui/hud/hud.gd"
 }, {
 "base": "ScaffolderPanelContainer",
 "class": "HudKeyValueBox",
@@ -2019,6 +2034,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/surfacer/src/platform_graph/edge/utils/vertical_movement_utils.gd"
 }, {
+"base": "VBoxContainer",
+"class": "VillainIndicators",
+"language": "GDScript",
+"path": "res://src/gui/hud/villain_indicators.gd"
+}, {
 "base": "CharacterActionHandler",
 "class": "WallClimbAction",
 "language": "GDScript",
@@ -2173,6 +2193,7 @@ _global_script_class_icons={
 "ConfirmDataDeletionScreenWithAnalytics": "",
 "ContinuousEdgeTrajectoryLegendItem": "",
 "ControlRow": "",
+"CooldownIndicator": "",
 "CrashReporter": "",
 "CrashTestDummy": "",
 "DataAgreementScreen": "",
@@ -2267,10 +2288,12 @@ _global_script_class_icons={
 "HapticFeedbackControlRow": "",
 "HeaderControlRow": "",
 "Hero": "",
+"HeroIndicators": "",
 "HighScoreControlRow": "",
 "HorizontalMovementUtils": "",
 "HsvColorParams": "",
 "HsvRangeColorParams": "",
+"Hud": "",
 "HudKeyValueBox": "",
 "HudKeyValueItemControlRow": "",
 "HudKeyValueList": "",
@@ -2507,6 +2530,7 @@ _global_script_class_icons={
 "ValidEdgeTrajectoryLegendItem": "",
 "VerticalEdgeStep": "",
 "VerticalMovementUtils": "",
+"VillainIndicators": "",
 "WallClimbAction": "",
 "WallDashAction": "",
 "WallDefaultAction": "",

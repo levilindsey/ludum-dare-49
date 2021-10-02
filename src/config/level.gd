@@ -12,8 +12,10 @@ var right_spawn_point: Vector2
 var ring_bearer: Hero
 
 
-#func _load() -> void:
-#    ._load()
+func _load() -> void:
+    ._load()
+    
+    Sc.gui.hud.create_cooldowns()
 
 
 func _start() -> void:
@@ -45,7 +47,7 @@ func _start() -> void:
 
 func _parse_schedule() -> void:
     assert(session.config.has("schedule"))
-    assert(session.config.has("shake_cooldown_period"))
+    assert(session.config.has("tremor_cooldown_period"))
     
     for event in session.config.schedule:
         assert(event.has("type"))
@@ -113,21 +115,112 @@ func _physics_process(_delta: float) -> void:
     
     _update_ring_bearer()
     
+    var bobbit_active_count := _get_hero_active_count("bobbit")
+    var dwarf_active_count := _get_hero_active_count("dwarf")
+    var elf_active_count := _get_hero_active_count("elf")
+    var wizard_active_count := _get_hero_active_count("wizard")
+    
+    var bobbit_remaining_count := _get_event_remaining_count(
+            session._bobbit_spawns,
+            session._next_bobbit_spawn_index)
+    var dwarf_remaining_count := _get_event_remaining_count(
+            session._dwarf_spawns,
+            session._next_dwarf_spawn_index)
+    var elf_remaining_count := _get_event_remaining_count(
+            session._elf_spawns,
+            session._next_elf_spawn_index)
+    var wizard_remaining_count := _get_event_remaining_count(
+            session._wizard_spawns,
+            session._next_wizard_spawn_index)
+    
+    var wave_remaining_count := _get_event_remaining_count(
+            session._waves,
+            session._next_wave_index)
+    var boulder_remaining_count := _get_event_remaining_count(
+            session._boulders,
+            session._next_boulder_index)
+    var tremor_remaining_count := INF
+    
+    var bobbit_cooldown_progress := _get_schedule_progress(
+            current_time,
+            session._bobbit_spawns,
+            session._next_bobbit_spawn_index)
+    var dwarf_cooldown_progress := _get_schedule_progress(
+            current_time,
+            session._dwarf_spawns,
+            session._next_dwarf_spawn_index)
+    var elf_cooldown_progress := _get_schedule_progress(
+            current_time,
+            session._elf_spawns,
+            session._next_elf_spawn_index)
+    var wizard_cooldown_progress := _get_schedule_progress(
+            current_time,
+            session._wizard_spawns,
+            session._next_wizard_spawn_index)
+    
+    var wave_cooldown_progress := _get_schedule_progress(
+            current_time,
+            session._waves,
+            session._next_wave_index)
+    var tremor_cooldown_progress := min(1.0,
+            (current_time - session.last_tremor_time) / \
+            session.config.tremor_cooldown_period)
+    var boulder_cooldown_progress := _get_schedule_progress(
+            current_time,
+            session._boulders,
+            session._next_boulder_index)
+    
+    Sc.gui.hud.hero_indicators.update_indicator(
+            "bobbit",
+            bobbit_cooldown_progress,
+            bobbit_remaining_count)
+    Sc.gui.hud.hero_indicators.update_indicator(
+            "dwarf",
+            dwarf_cooldown_progress,
+            dwarf_remaining_count)
+    Sc.gui.hud.hero_indicators.update_indicator(
+            "elf",
+            elf_cooldown_progress,
+            elf_remaining_count)
+    Sc.gui.hud.hero_indicators.update_indicator(
+            "wizard",
+            wizard_cooldown_progress,
+            wizard_remaining_count)
+    
+    Sc.gui.hud.hero_indicators.update_indicator(
+            "wave",
+            wave_cooldown_progress,
+            wave_remaining_count)
+    Sc.gui.hud.villain_indicators.update_indicator(
+            "tremor",
+            tremor_cooldown_progress,
+            tremor_remaining_count)
+    Sc.gui.hud.villain_indicators.update_indicator(
+            "boulder",
+            boulder_cooldown_progress,
+            boulder_remaining_count)
+    
     session._hero_count = \
-            _get_hero_count("bobbit") + \
-            _get_hero_count("dwarf") + \
-            _get_hero_count("elf") + \
-            _get_hero_count("wizard")
+            bobbit_active_count + \
+            dwarf_active_count + \
+            elf_active_count + \
+            wizard_active_count
     
     if session._is_hero_spawning_finished and \
             session._hero_count == 0:
         _trigger_heroes_lose()
 
 
-func _get_hero_count(hero_name: String) -> int:
+func _get_hero_active_count(hero_name: String) -> int:
     return characters[hero_name].size() if \
             characters.has(hero_name) else \
             0
+
+
+func _get_event_remaining_count(
+        schedule: Array,
+        next_index: int) -> int:
+    return schedule.size() - next_index
 
 
 func _flush_schedule(
@@ -147,6 +240,26 @@ func _flush_schedule(
                 schedule.size() > next_index else \
                 INF
     return next_index
+
+
+func _get_schedule_progress(
+        current_time: float,
+        schedule: Array,
+        next_index: int) -> float:
+    var is_last_event := next_index >= schedule.size()
+    var is_first_event := next_index == 0
+    
+    if is_last_event:
+        return INF
+    
+    var previous_event_time: float = \
+            0.0 if \
+            is_first_event else \
+            schedule[next_index - 1].time
+    var next_event_time: float = schedule[next_index].time
+    
+    return (current_time - previous_event_time) / \
+            (next_event_time - previous_event_time)
 
 
 func _spawn_character(spawn_event_config: Dictionary) -> void:

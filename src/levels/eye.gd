@@ -37,7 +37,7 @@ func _track_ring() -> void:
         
         if ring_position.y < _WIDE_EYED_HEIGHT_THRESHOLD:
             direction = EyeDirection.WIDE
-        if angle_to_ring < _RIGHT_GAZE_ANGLE_THRESHOLD:
+        elif angle_to_ring < _RIGHT_GAZE_ANGLE_THRESHOLD:
             direction = EyeDirection.RIGHT
         elif angle_to_ring > _LEFT_GAZE_ANGLE_THRESHOLD:
             direction = EyeDirection.LEFT

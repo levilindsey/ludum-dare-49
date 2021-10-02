@@ -1,0 +1,174 @@
+[gd_scene load_steps=27 format=2]
+
+[ext_resource path="res://addons/scaffolder/src/gui/widgets/scaffolder_label.tscn" type="PackedScene" id=1]
+[ext_resource path="res://addons/scaffolder/assets/fonts/pxlzr_font_s.tres" type="DynamicFont" id=2]
+[ext_resource path="res://addons/scaffolder/src/gui/style_box_flat_scalable.gd" type="Script" id=3]
+[ext_resource path="res://addons/scaffolder/src/gui/widgets/spacer.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/images/cooldown_indicator.png" type="Texture" id=5]
+[ext_resource path="res://src/gui/hud/cooldown_indicator.gd" type="Script" id=6]
+[ext_resource path="res://addons/scaffolder/src/gui/widgets/animated_texture_rect.tscn" type="PackedScene" id=7]
+
+[sub_resource type="StyleBoxFlat" id=38]
+bg_color = Color( 1, 1, 1, 0 )
+script = ExtResource( 3 )
+
+[sub_resource type="AtlasTexture" id=20]
+atlas = ExtResource( 5 )
+region = Rect2( 0, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=21]
+atlas = ExtResource( 5 )
+region = Rect2( 32, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=22]
+atlas = ExtResource( 5 )
+region = Rect2( 64, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=23]
+atlas = ExtResource( 5 )
+region = Rect2( 96, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=24]
+atlas = ExtResource( 5 )
+region = Rect2( 128, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=25]
+atlas = ExtResource( 5 )
+region = Rect2( 160, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=26]
+atlas = ExtResource( 5 )
+region = Rect2( 192, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=27]
+atlas = ExtResource( 5 )
+region = Rect2( 224, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=28]
+atlas = ExtResource( 5 )
+region = Rect2( 256, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=29]
+atlas = ExtResource( 5 )
+region = Rect2( 288, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=30]
+atlas = ExtResource( 5 )
+region = Rect2( 320, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=31]
+atlas = ExtResource( 5 )
+region = Rect2( 352, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=32]
+atlas = ExtResource( 5 )
+region = Rect2( 384, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=33]
+atlas = ExtResource( 5 )
+region = Rect2( 416, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=34]
+atlas = ExtResource( 5 )
+region = Rect2( 448, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=35]
+atlas = ExtResource( 5 )
+region = Rect2( 480, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=36]
+atlas = ExtResource( 5 )
+region = Rect2( 512, 0, 32, 32 )
+
+[sub_resource type="SpriteFrames" id=37]
+animations = [ {
+"frames": [ SubResource( 20 ), SubResource( 21 ), SubResource( 22 ), SubResource( 23 ), SubResource( 24 ), SubResource( 25 ), SubResource( 26 ), SubResource( 27 ), SubResource( 28 ), SubResource( 29 ), SubResource( 30 ), SubResource( 31 ), SubResource( 32 ), SubResource( 33 ), SubResource( 34 ), SubResource( 35 ), SubResource( 36 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[node name="CooldownIndicator" type="PanelContainer"]
+margin_right = 192.0
+margin_bottom = 48.0
+rect_min_size = Vector2( 192, 48 )
+mouse_filter = 2
+custom_styles/panel = SubResource( 38 )
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+margin_right = 192.0
+margin_bottom = 48.0
+rect_min_size = Vector2( 192, 48 )
+custom_constants/separation = 0
+__meta__ = {
+"sc_separation": 0
+}
+
+[node name="Spacer" parent="HBoxContainer" instance=ExtResource( 4 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 24.0
+margin_bottom = 24.0
+
+[node name="Progress" parent="HBoxContainer" instance=ExtResource( 7 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 48.0
+margin_bottom = 48.0
+rect_min_size = Vector2( 48, 48 )
+frames = SubResource( 37 )
+original_frame_size = Vector2( 32, 32 )
+texture_scale = 1.5
+playing = false
+
+[node name="Spacer2" parent="HBoxContainer" instance=ExtResource( 4 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 48.0
+margin_top = 24.0
+margin_right = 51.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 3, 0 )
+size = Vector2( 3, 0 )
+
+[node name="Count" parent="HBoxContainer" instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 51.0
+margin_top = 12.0
+margin_right = 51.0
+margin_bottom = 35.0
+custom_fonts/font = ExtResource( 2 )
+font_size = "S"
+
+[node name="Spacer3" parent="HBoxContainer" instance=ExtResource( 4 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 51.0
+margin_top = 24.0
+margin_right = 54.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 3, 0 )
+size = Vector2( 3, 0 )
+
+[node name="Label" parent="HBoxContainer" instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 54.0
+margin_top = 12.0
+margin_right = 54.0
+margin_bottom = 35.0
+custom_fonts/font = ExtResource( 2 )
+font_size = "S"
+
+[node name="Spacer4" parent="HBoxContainer" instance=ExtResource( 4 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 54.0
+margin_top = 24.0
+margin_right = 54.0
+margin_bottom = 24.0
