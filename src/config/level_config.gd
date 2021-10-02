@@ -16,7 +16,7 @@ var level_manifest := {
         unlock_conditions = "unlocked",
         scene_path = LEVELS_PATH_PREFIX + "level0.tscn",
         platform_graph_character_names = [
-            "test_character",
+            "bobbit",
         ],
     },
 #    "1": {
@@ -27,7 +27,7 @@ var level_manifest := {
 #        unlock_conditions = "unlocked",
 #        scene_path = LEVELS_PATH_PREFIX + "level1.tscn",
 #        platform_graph_character_names = [
-#            "test_character",
+#            "bobbit",
 #        ],
 #        intro_choreography = [
 #            {
@@ -58,7 +58,7 @@ var level_manifest := {
 #        unlock_conditions = "finish_previous_level",
 #        scene_path = LEVELS_PATH_PREFIX + "level2.tscn",
 #        platform_graph_character_names = [
-#            "test_character",
+#            "bobbit",
 #        ],
 #    },
 }

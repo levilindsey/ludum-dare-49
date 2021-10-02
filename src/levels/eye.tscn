@@ -1,0 +1,81 @@
+[gd_scene load_steps=18 format=2]
+
+[ext_resource path="res://assets/images/eye/eye_flame.png" type="Texture" id=1]
+[ext_resource path="res://assets/images/eye/eye_wide.png" type="Texture" id=2]
+[ext_resource path="res://assets/images/eye/eye_left.png" type="Texture" id=3]
+[ext_resource path="res://assets/images/eye/eye_center.png" type="Texture" id=4]
+[ext_resource path="res://assets/images/eye/eye_down.png" type="Texture" id=5]
+[ext_resource path="res://assets/images/eye/eye_narrow.png" type="Texture" id=6]
+[ext_resource path="res://assets/images/eye/eye_right.png" type="Texture" id=7]
+[ext_resource path="res://src/levels/eye.gd" type="Script" id=8]
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 1 )
+region = Rect2( 0, 0, 128, 96 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 1 )
+region = Rect2( 128, 0, 128, 96 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 1 )
+region = Rect2( 256, 0, 128, 96 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 1 )
+region = Rect2( 384, 0, 128, 96 )
+
+[sub_resource type="AtlasTexture" id=5]
+atlas = ExtResource( 1 )
+region = Rect2( 512, 0, 128, 96 )
+
+[sub_resource type="AtlasTexture" id=6]
+atlas = ExtResource( 1 )
+region = Rect2( 640, 0, 128, 96 )
+
+[sub_resource type="AtlasTexture" id=7]
+atlas = ExtResource( 1 )
+region = Rect2( 768, 0, 128, 96 )
+
+[sub_resource type="AtlasTexture" id=8]
+atlas = ExtResource( 1 )
+region = Rect2( 896, 0, 128, 96 )
+
+[sub_resource type="SpriteFrames" id=9]
+animations = [ {
+"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ) ],
+"loop": true,
+"name": "default",
+"speed": 16.0
+} ]
+
+[node name="Eye" type="Node2D"]
+script = ExtResource( 8 )
+
+[node name="Flames" type="AnimatedSprite" parent="."]
+frames = SubResource( 9 )
+frame = 6
+playing = true
+
+[node name="EyeCenter" type="Sprite" parent="."]
+texture = ExtResource( 4 )
+
+[node name="EyeLeft" type="Sprite" parent="."]
+visible = false
+texture = ExtResource( 3 )
+
+[node name="EyeRight" type="Sprite" parent="."]
+visible = false
+texture = ExtResource( 7 )
+
+[node name="EyeDown" type="Sprite" parent="."]
+visible = false
+texture = ExtResource( 5 )
+
+[node name="EyeWide" type="Sprite" parent="."]
+visible = false
+texture = ExtResource( 2 )
+
+[node name="EyeNarrow" type="Sprite" parent="."]
+visible = false
+texture = ExtResource( 6 )

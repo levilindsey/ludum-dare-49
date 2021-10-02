@@ -3,12 +3,22 @@ class_name Level
 extends SurfacerLevel
 
 
+var eye: Eye
+
+
 #func _load() -> void:
 #    ._load()
 
 
 #func _start() -> void:
 #    ._start()
+
+
+func _ready() -> void:
+    eye = get_node("Eye")
+    assert(is_instance_valid(eye))
+    
+    eye.set_direction(EyeDirection.DOWN)
 
 
 #func _destroy() -> void:

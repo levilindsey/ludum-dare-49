@@ -94,6 +94,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/surfacer/src/character/behaviors/behavior_move_result.gd"
 }, {
+"base": "SurfacerCharacter",
+"class": "Bobbit",
+"language": "GDScript",
+"path": "res://src/characters/bobbit/bobbit.gd"
+}, {
 "base": "CheckboxControlRow",
 "class": "ButtonControlsControlRow",
 "language": "GDScript",
@@ -613,6 +618,16 @@ _global_script_classes=[ {
 "class": "ExclamationMarkAnnotator",
 "language": "GDScript",
 "path": "res://addons/scaffolder/src/annotators/transient_annotators/exclamation_mark_annotator.gd"
+}, {
+"base": "Node2D",
+"class": "Eye",
+"language": "GDScript",
+"path": "res://src/levels/eye.gd"
+}, {
+"base": "Reference",
+"class": "EyeDirection",
+"language": "GDScript",
+"path": "res://src/levels/eye_direction.gd"
 }, {
 "base": "EdgeAttempt",
 "class": "FailedEdgeAttempt",
@@ -1609,6 +1624,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/scaffolder/src/gui/screens/settings_screen.gd"
 }, {
+"base": "Reference",
+"class": "SimpleTileMap",
+"language": "GDScript",
+"path": "res://src/levels/simple_tile_map.gd"
+}, {
 "base": "ControlRow",
 "class": "SliderControlRow",
 "language": "GDScript",
@@ -1889,11 +1909,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/surfacer/src/platform_graph/surfaces_tile_map.gd"
 }, {
-"base": "SurfacerCharacter",
-"class": "TestCharacter",
-"language": "GDScript",
-"path": "res://src/characters/test_character/test_character.gd"
-}, {
 "base": "SurfacesTileMap",
 "class": "TestOddShapesTileMap",
 "language": "GDScript",
@@ -2077,6 +2092,7 @@ _global_script_class_icons={
 "BeatTracker": "",
 "Behavior": "",
 "BehaviorMoveResult": "",
+"Bobbit": "",
 "ButtonControlsControlRow": "",
 "CameraController": "",
 "CameraPanController": "",
@@ -2181,6 +2197,8 @@ _global_script_class_icons={
 "EdgesWithoutIncreasingJumpHeightGroupItemController": "",
 "ElementAnnotator": "",
 "ExclamationMarkAnnotator": "",
+"Eye": "",
+"EyeDirection": "",
 "FailedEdgeAttempt": "",
 "FailedEdgeAttemptAnnotationElement": "",
 "FailedEdgeItemController": "",
@@ -2380,6 +2398,7 @@ _global_script_class_icons={
 "SelectionDescription": "",
 "SettingsGroup": "res://addons/scaffolder/assets/images/editor_icons/scaffolder_placeholder.png",
 "SettingsScreen": "",
+"SimpleTileMap": "",
 "SliderControlRow": "",
 "SlowMotionController": "",
 "SlowMotionMusic": "",
@@ -2436,7 +2455,6 @@ _global_script_class_icons={
 "SurfacesGroupItemController": "",
 "SurfacesOfSideGroupItemController": "",
 "SurfacesTileMap": "res://addons/surfacer/assets/images/editor_icons/surfaces_tile_map.png",
-"TestCharacter": "",
 "TestOddShapesTileMap": "",
 "TextControlRow": "",
 "ThirdPartyLicenses": "",

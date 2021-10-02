@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/bobbit_jump.wav-71b67fd426f6111a18d56277aef51e48.sample"
+
+[deps]
+
+source_file="res://assets/sounds/bobbit_jump.wav"
+dest_files=[ "res://.import/bobbit_jump.wav-71b67fd426f6111a18d56277aef51e48.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

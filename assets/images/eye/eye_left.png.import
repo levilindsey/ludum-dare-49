@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/go_icon.png-6aef6dbc429de61a5086a2a314c82018.stex"
+path="res://.import/eye_left.png-5ff1ebd1bb7648011620e6d4caa40fe6.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/gui/go_icon.png"
-dest_files=[ "res://.import/go_icon.png-6aef6dbc429de61a5086a2a314c82018.stex" ]
+source_file="res://assets/images/eye/eye_left.png"
+dest_files=[ "res://.import/eye_left.png-5ff1ebd1bb7648011620e6d4caa40fe6.stex" ]
 
 [params]
 

@@ -54,7 +54,7 @@ func _override_configs_for_current_run() -> void:
     _gui_manifest.hud_manifest.is_hud_visible_by_default = true
     
 #    _surfacer_debug_params.limit_parsing = {
-#        character_name = "test_character",
+#        character_name = "bobbit",
 #
 #        edge_type = EdgeType.JUMP_FROM_SURFACE_EDGE,
 ##        edge_type = EdgeType.CLIMB_TO_ADJACENT_SURFACE_EDGE,
@@ -101,14 +101,14 @@ var _metadata := {
     debug = false,
     playtest = false,
     pauses_on_focus_out = true,
-    also_prints_to_stdout = true,
+    also_prints_to_stdout = false,
     logs_character_events = true,
     logs_analytics_events = true,
     logs_bootstrap_events = true,
     logs_device_settings = true,
     logs_in_editor_events = true,
     is_profiler_enabled = true,
-    are_all_levels_unlocked = true,
+    are_all_levels_unlocked = false,
     is_splash_skipped = false,
     uses_threads = _uses_threads,
     thread_count = OS.get_processor_count() if _uses_threads else 1,
@@ -210,15 +210,15 @@ var _sounds_manifest := [
     },
     
     {
-        name = "test_character_jump",
+        name = "bobbit_jump",
         volume_db = 0.0,
     },
     {
-        name = "test_character_land",
+        name = "bobbit_land",
         volume_db = 0.0,
     },
     {
-        name = "test_character_hit_surface",
+        name = "bobbit_hit_surface",
         volume_db = 0.0,
     },
 ]
@@ -683,11 +683,11 @@ var _slow_motion_manifest := {
 var _input_map = ScaffolderProjectSettings.DEFAULT_INPUT_MAP
 
 var _character_scenes := [
-    preload("res://src/characters/test_character/test_character.tscn"),
+    preload("res://src/characters/bobbit/bobbit.tscn"),
 ]
 
 var _character_manifest := {
-    default_character_name = "test_character",
+    default_character_name = "",
     character_scenes = _character_scenes,
     omits_npcs = false,
 }
