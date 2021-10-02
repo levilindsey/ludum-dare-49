@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://src/characters/move_to_goal_behavior.gd" type="Script" id=1]
+
+[node name="MoveToGoalBehavior" type="Node2D"]
+script = ExtResource( 1 )
+min_pause_between_movements = 0.2
+max_pause_between_movements = 1.0

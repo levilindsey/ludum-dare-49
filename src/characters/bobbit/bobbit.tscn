@@ -1,19 +1,19 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://src/characters/bobbit/bobbit.gd" type="Script" id=1]
 [ext_resource path="res://addons/surfacer/src/platform_graph/edge/models/movement_params.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/characters/bobbit/bobbit_animator.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/characters/move_to_goal_behavior.tscn" type="PackedScene" id=4]
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 3, 5 )
 
 [node name="Bobbit" type="KinematicBody2D"]
-collision_layer = 8
+collision_layer = 2
 collision_mask = 3
 script = ExtResource( 1 )
 character_name = "bobbit"
-is_bouncy = true
-primary_annotation_color = Color( 0.87451, 0.443137, 0.14902, 1 )
+primary_annotation_color = Color( 0, 0, 0, 1 )
 secondary_annotation_color = Color( 1, 1, 1, 1 )
 navigation_annotation_color_override = Color( 0, 0, 0, 1 )
 position_annotation_color_override = Color( 0, 0, 0, 1 )
@@ -23,7 +23,7 @@ exclamation_mark_stroke_width_start = 1.2
 exclamation_mark_duration = 1.8
 exclamation_mark_throttle_interval = 1.0
 logs_common_debugging_events = false
-logs_custom_events = false
+logs_custom_events = true
 logs_behavior_events = false
 logs_navigator_events = false
 logs_collision_events = false
@@ -37,7 +37,12 @@ collider_shape = SubResource( 2 )
 character_name = "bobbit"
 __movement_params_identifier__ = "_"
 ceiling_crawl_speed_multiplier = 1.5
+jump_boost_multiplier = 0.6
+wall_jump_horizontal_boost_multiplier = 0.7
+wall_fall_horizontal_boost_multiplier = 0.7
 ceiling_fall_velocity_boost = 100.0
+max_horizontal_speed_default_multiplier = 0.7
+max_vertical_speed_multiplier = 0.6
 stops_on_slope = true
 ceiling_crawling_edge_weight_multiplier_override = -1.0
 climb_to_adjacent_surface_edge_weight_multiplier_override = -1.0
@@ -108,3 +113,6 @@ animations = {
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, -5 )
 shape = SubResource( 2 )
+
+[node name="MoveToGoalBehavior" parent="." instance=ExtResource( 4 )]
+only_navigates_reversible_paths = false
