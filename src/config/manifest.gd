@@ -521,18 +521,22 @@ var _settings_item_manifest := {
 var _pause_item_manifest := [
     LevelControlRow,
     TimeControlRow,
-    FastestTimeControlRow,
+    WavesControlRow,
+    KnockOffsControlRow,
+#    FastestTimeControlRow,
 ]
 
 var _game_over_item_manifest := [
     LevelControlRow,
     TimeControlRow,
-    FastestTimeControlRow,
+    WavesControlRow,
+    KnockOffsControlRow,
+#    FastestTimeControlRow,
 ]
 
 var _level_select_item_manifest := [
     TotalPlaysControlRow,
-    FastestTimeControlRow,
+#    FastestTimeControlRow,
 ]
 
 var _hud_manifest := {
@@ -549,6 +553,26 @@ var _hud_manifest := {
             settings_enablement_label = "Time",
             enabled_by_default = true,
             settings_group_key = "hud",
+        },
+        {
+            item_class = WavesControlRow,
+            settings_enablement_label = "Wave",
+            enabled_by_default = true,
+            settings_group_key = "hud",
+            animation = {
+                modulate_color = HUD_KEY_VALUE_BOX_MODULATE_COLOR,
+                duration = 0.5,
+            },
+        },
+        {
+            item_class = KnockOffsControlRow,
+            settings_enablement_label = "Knock-offs",
+            enabled_by_default = true,
+            settings_group_key = "hud",
+            animation = {
+                modulate_color = HUD_KEY_VALUE_BOX_MODULATE_COLOR,
+                duration = 0.5,
+            },
         },
     ],
     is_inspector_enabled_default = false,

@@ -18,6 +18,20 @@ var level_manifest := {
         platform_graph_character_names = [
             "bobbit",
         ],
+        shake_cooldown_period = 4.0,
+        schedule = [
+            {type = "wave", time = 1.0},
+            {type = "bobbit", time = 1.0, side = "l"},
+            
+            {type = "wave", time = 6.0},
+            {type = "bobbit", time = 6.0, side = "r"},
+            {type = "bobbit", time = 6.0, side = "r"},
+            {type = "bobbit", time = 6.0, side = "r"},
+            {type = "bobbit", time = 6.0, side = "r"},
+            {type = "bobbit", time = 6.0, side = "r"},
+            {type = "bobbit", time = 6.0, side = "l"},
+            {type = "bobbit", time = 6.0, side = "l"},
+        ],
     },
 #    "1": {
 #        name = "Foo",

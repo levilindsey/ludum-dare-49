@@ -1,16 +1,16 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://src/characters/bobbit/bobbit.gd" type="Script" id=1]
 [ext_resource path="res://addons/surfacer/src/platform_graph/edge/models/movement_params.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/characters/bobbit/bobbit_animator.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/characters/move_to_goal_behavior.tscn" type="PackedScene" id=4]
+[ext_resource path="res://addons/scaffolder/assets/images/misc/circle_gradient_modified_1024.png" type="Texture" id=5]
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 3, 5 )
 
 [node name="Bobbit" type="KinematicBody2D"]
 collision_layer = 2
-collision_mask = 3
 script = ExtResource( 1 )
 character_name = "bobbit"
 primary_annotation_color = Color( 0, 0, 0, 1 )
@@ -31,6 +31,20 @@ logs_surface_events = false
 logs_action_events = false
 logs_verbose_events = false
 logs_verbose_navigator_events = false
+
+[node name="Glow" type="Light2D" parent="."]
+position = Vector2( 0, -4 )
+scale = Vector2( 0.04, 0.04 )
+texture = ExtResource( 5 )
+energy = 0.9
+range_layer_min = -100
+range_layer_max = 100
+range_item_cull_mask = 12
+shadow_enabled = true
+shadow_gradient_length = 2.0
+shadow_filter = 1
+shadow_filter_smooth = 4.0
+shadow_item_cull_mask = 12
 
 [node name="MovementParameters" parent="." instance=ExtResource( 2 )]
 collider_shape = SubResource( 2 )

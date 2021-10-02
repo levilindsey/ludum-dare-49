@@ -974,6 +974,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/surfacer/src/character/kinematic_collision_2D_copy.gd"
 }, {
+"base": "TextControlRow",
+"class": "KnockOffsControlRow",
+"language": "GDScript",
+"path": "res://src/gui/knock_offs_control_row.gd"
+}, {
 "base": "VBoxContainer",
 "class": "LabeledControlList",
 "language": "GDScript",
@@ -2044,6 +2049,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/surfacer/src/character/behaviors/wander_behavior.gd"
 }, {
+"base": "TextControlRow",
+"class": "WavesControlRow",
+"language": "GDScript",
+"path": "res://src/gui/waves_control_row.gd"
+}, {
 "base": "Reference",
 "class": "Waypoint",
 "language": "GDScript",
@@ -2288,6 +2298,7 @@ _global_script_class_icons={
 "JumpLandPositionsAnnotationElement": "",
 "JumpLandPositionsUtils": "",
 "KinematicCollision2DCopy": "",
+"KnockOffsControlRow": "",
 "LabeledControlList": "res://addons/scaffolder/assets/images/editor_icons/control_row_list.png",
 "LdWelcomePanel": "",
 "LeftWallsItemController": "",
@@ -2502,6 +2513,7 @@ _global_script_class_icons={
 "WallFallAction": "",
 "WallJumpAction": "",
 "WanderBehavior": "res://addons/surfacer/assets/images/editor_icons/wander_behavior.png",
+"WavesControlRow": "",
 "Waypoint": "",
 "WaypointUtils": "",
 "WaypointValidity": "",
@@ -2544,6 +2556,8 @@ pointing/emulate_touch_from_mouse=true
 [layer_names]
 
 2d_render/layer_2="character"
+2d_render/layer_3="background"
+2d_render/layer_4="collidable_tiles"
 2d_physics/layer_1="surfaces_tilemaps"
 2d_physics/layer_2="heroes"
 2d_physics/layer_3="minions"

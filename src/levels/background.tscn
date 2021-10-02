@@ -5,4 +5,5 @@
 [node name="Background" type="Node2D"]
 
 [node name="Sprite" type="Sprite" parent="."]
+light_mask = 4
 texture = ExtResource( 1 )

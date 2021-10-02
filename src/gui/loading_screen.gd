@@ -180,7 +180,8 @@ func _on_graph_parse_finished() -> void:
 
 
 func _input(event: InputEvent) -> void:
-    if Sc.level.graph_parser.is_parse_finished and \
+    if is_instance_valid(Sc.level) and \
+            Sc.level.graph_parser.is_parse_finished and \
             (event is InputEventKey or \
             event is InputEventMouseButton or \
             event is InputEventScreenTouch):
