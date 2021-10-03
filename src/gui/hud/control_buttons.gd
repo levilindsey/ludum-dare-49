@@ -9,6 +9,11 @@ var button_count := 0
 
 
 func _ready() -> void:
+    Sc.gui.add_gui_to_scale(self)
+    _on_gui_scale_changed()
+
+
+func on_schedule_ready() -> void:
     $HBoxContainer/BoulderButton.visible = false
     $HBoxContainer/BaldrockButton.visible = false
     $HBoxContainer/OrcButton.visible = false
@@ -25,7 +30,6 @@ func _ready() -> void:
         $HBoxContainer/OrcButton.visible = true
         button_count += 1
     
-    Sc.gui.add_gui_to_scale(self)
     _on_gui_scale_changed()
 
 

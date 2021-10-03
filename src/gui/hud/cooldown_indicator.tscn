@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://addons/scaffolder/src/gui/widgets/scaffolder_label.tscn" type="PackedScene" id=1]
 [ext_resource path="res://addons/scaffolder/assets/fonts/pxlzr_font_s.tres" type="DynamicFont" id=2]
@@ -7,8 +7,9 @@
 [ext_resource path="res://assets/images/cooldown_indicator.png" type="Texture" id=5]
 [ext_resource path="res://src/gui/hud/cooldown_indicator.gd" type="Script" id=6]
 [ext_resource path="res://addons/scaffolder/src/gui/widgets/animated_texture_rect.tscn" type="PackedScene" id=7]
+[ext_resource path="res://addons/scaffolder/assets/fonts/pxlzr_font_xs.tres" type="DynamicFont" id=8]
 
-[sub_resource type="StyleBoxFlat" id=38]
+[sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 1, 1, 1, 0 )
 script = ExtResource( 3 )
 
@@ -93,7 +94,7 @@ margin_right = 192.0
 margin_bottom = 48.0
 rect_min_size = Vector2( 192, 48 )
 mouse_filter = 2
-custom_styles/panel = SubResource( 38 )
+custom_styles/panel = SubResource( 1 )
 script = ExtResource( 6 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -117,30 +118,30 @@ margin_bottom = 24.0
 [node name="Progress" parent="HBoxContainer" instance=ExtResource( 7 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_right = 48.0
-margin_bottom = 48.0
-rect_min_size = Vector2( 48, 48 )
+margin_top = 8.0
+margin_right = 32.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 32, 32 )
 frames = SubResource( 37 )
 original_frame_size = Vector2( 32, 32 )
-texture_scale = 1.5
 playing = false
 
 [node name="Spacer2" parent="HBoxContainer" instance=ExtResource( 4 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 48.0
+margin_left = 32.0
 margin_top = 24.0
-margin_right = 51.0
+margin_right = 38.0
 margin_bottom = 24.0
-rect_min_size = Vector2( 3, 0 )
-size = Vector2( 3, 0 )
+rect_min_size = Vector2( 6, 0 )
+size = Vector2( 6, 0 )
 
 [node name="Count" parent="HBoxContainer" instance=ExtResource( 1 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 51.0
+margin_left = 38.0
 margin_top = 12.0
-margin_right = 51.0
+margin_right = 38.0
 margin_bottom = 35.0
 custom_fonts/font = ExtResource( 2 )
 font_size = "S"
@@ -148,27 +149,27 @@ font_size = "S"
 [node name="Spacer3" parent="HBoxContainer" instance=ExtResource( 4 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 51.0
+margin_left = 38.0
 margin_top = 24.0
-margin_right = 54.0
+margin_right = 44.0
 margin_bottom = 24.0
-rect_min_size = Vector2( 3, 0 )
-size = Vector2( 3, 0 )
+rect_min_size = Vector2( 6, 0 )
+size = Vector2( 6, 0 )
 
 [node name="Label" parent="HBoxContainer" instance=ExtResource( 1 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 54.0
-margin_top = 12.0
-margin_right = 54.0
-margin_bottom = 35.0
-custom_fonts/font = ExtResource( 2 )
-font_size = "S"
+margin_left = 44.0
+margin_top = 14.0
+margin_right = 44.0
+margin_bottom = 34.0
+custom_fonts/font = ExtResource( 8 )
+font_size = "Xs"
 
 [node name="Spacer4" parent="HBoxContainer" instance=ExtResource( 4 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 54.0
+margin_left = 44.0
 margin_top = 24.0
-margin_right = 54.0
+margin_right = 44.0
 margin_bottom = 24.0

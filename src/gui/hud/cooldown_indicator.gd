@@ -3,7 +3,7 @@ class_name CooldownIndicator
 extends ScaffolderPanelContainer
 
 
-const _SIZE := Vector2(192.0, 48.0)
+const _SIZE := Vector2(128.0, 32.0)
 const _FRAME_COUNT := 17
 
 export var label := "" setget _set_label

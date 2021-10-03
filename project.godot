@@ -2664,7 +2664,7 @@ pointing/emulate_touch_from_mouse=true
 2d_physics/layer_2="IGNORE_fall_through_floors"
 2d_physics/layer_3="IGNORE_walk_through_walls"
 2d_physics/layer_4="heroes"
-2d_physics/layer_5="minions"
+2d_physics/layer_5="villains"
 2d_physics/layer_6="goal"
 
 [logging]

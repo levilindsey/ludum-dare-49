@@ -9,6 +9,11 @@ var cooldown_count := 0
 
 
 func _ready() -> void:
+    Sc.gui.add_gui_to_scale(self)
+    _on_gui_scale_changed()
+
+
+func on_schedule_ready() -> void:
     $BoulderCooldown.visible = false
     $OrcCooldown.visible = false
     $BaldrockCooldown.visible = false
@@ -25,7 +30,6 @@ func _ready() -> void:
         $BaldrockCooldown.visible = true
         cooldown_count += 1
     
-    Sc.gui.add_gui_to_scale(self)
     _on_gui_scale_changed()
 
 
