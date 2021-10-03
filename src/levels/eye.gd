@@ -14,6 +14,8 @@ const _DOWNWARD_GAZE_HEIGHT_THRESHOLD := 128.0
 const _WIDE_EYED_HEIGHT_THRESHOLD := -64.0
 const _NARROW_EYED_DURATION := 2.0
 
+const _FLAME_SPEED_AGGRAVATED := 2.0
+
 var _last_narrow_start_time := -INF
 
 
@@ -27,12 +29,14 @@ func _process(_delta: float) -> void:
 
 func _track_ring() -> void:
     var direction := EyeDirection.UNKNOWN
+    var flame_speed_scale := 1.0
     
     var ring_position: Vector2 = Sc.level.get_ring_position()
     
     if Sc.time.get_scaled_play_time() < \
             _last_narrow_start_time + _NARROW_EYED_DURATION:
         direction = EyeDirection.NARROW
+        flame_speed_scale = _FLAME_SPEED_AGGRAVATED
     elif ring_position == Vector2.INF:
         direction = EyeDirection.CENTER
     else:
@@ -41,6 +45,7 @@ func _track_ring() -> void:
         
         if ring_position.y < _WIDE_EYED_HEIGHT_THRESHOLD:
             direction = EyeDirection.WIDE
+            flame_speed_scale = _FLAME_SPEED_AGGRAVATED
         elif angle_to_ring < _RIGHT_GAZE_ANGLE_THRESHOLD:
             direction = EyeDirection.RIGHT
         elif angle_to_ring > _LEFT_GAZE_ANGLE_THRESHOLD:
@@ -51,6 +56,8 @@ func _track_ring() -> void:
             direction = EyeDirection.CENTER
     
     set_direction(direction)
+    
+    $Flames.speed_scale = flame_speed_scale
 
 
 func set_direction(direction: int) -> void:

@@ -54,6 +54,7 @@ script = ExtResource( 8 )
 
 [node name="Flames" type="AnimatedSprite" parent="."]
 frames = SubResource( 9 )
+frame = 1
 playing = true
 
 [node name="EyeCenter" type="Sprite" parent="."]
