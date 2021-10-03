@@ -27,7 +27,7 @@ script = ExtResource( 2 )
 [node name="ControlButtons" type="PanelContainer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 3712.0
+margin_left = 3720.0
 margin_top = 1915.0
 margin_right = 2792.0
 margin_bottom = 1243.0
@@ -39,7 +39,7 @@ __meta__ = {
 }
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
-margin_right = 104.0
+margin_right = 96.0
 margin_bottom = 96.0
 custom_constants/separation = 4
 __meta__ = {

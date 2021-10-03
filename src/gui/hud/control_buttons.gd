@@ -69,6 +69,14 @@ func set_button_enabled(
     button.disabled = !is_enabled
 
 
+# FIXME: ----------------------- Fix this to actually work.
+func set_button_hard_pressed(
+        button_name: String,
+        is_pressed: bool) -> void:
+    var button := get_button(button_name)
+    button.get_node("TextureButton").pressed = is_pressed
+
+
 func get_button(button_name: String) -> ScaffolderTextureButton:
     match button_name:
         "tremor":

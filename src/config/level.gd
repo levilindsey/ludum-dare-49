@@ -5,7 +5,7 @@ extends SurfacerLevel
 
 const BOULDER_SCENE := preload("res://src/levels/boulder.tscn")
 
-const _BOULDER_PLATFORM_SELECTION_MAX_DISTANCE := 48.0
+const _BOULDER_PLATFORM_SELECTION_MAX_DISTANCE := 48.0 * 48.0
 
 var eye: Eye
 var goal: Area2D
@@ -337,15 +337,32 @@ func _physics_process(_delta: float) -> void:
     Sc.gui.hud.control_buttons.set_button_enabled(
             "tremor",
             is_tremor_button_enabled)
-    Sc.gui.hud.control_buttons.set_button_enabled(
-            "boulder",
-            is_boulder_button_enabled)
-    Sc.gui.hud.control_buttons.set_button_enabled(
-            "orc",
-            is_orc_button_enabled)
-    Sc.gui.hud.control_buttons.set_button_enabled(
-            "baldrock",
-            is_baldrock_button_enabled)
+    if !is_in_boulder_selection_mode:
+        Sc.gui.hud.control_buttons.set_button_enabled(
+                "boulder",
+                is_boulder_button_enabled)
+    if !is_in_orc_selection_mode:
+        Sc.gui.hud.control_buttons.set_button_enabled(
+                "orc",
+                is_orc_button_enabled)
+    if !is_in_baldrock_selection_mode:
+        Sc.gui.hud.control_buttons.set_button_enabled(
+                "baldrock",
+                is_baldrock_button_enabled)
+    
+    # FIXME: ----------------------- Fix the cursor shape.
+    if is_in_boulder_selection_mode or \
+            is_in_orc_selection_mode or \
+            is_in_baldrock_selection_mode:
+        Sc.nav.current_screen_container.outer_panel \
+                .mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
+        Sc.nav.current_screen \
+                .mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
+    else:
+        Sc.nav.current_screen_container.outer_panel \
+                .mouse_default_cursor_shape = Control.CURSOR_ARROW
+        Sc.nav.current_screen \
+                .mouse_default_cursor_shape = Control.CURSOR_ARROW
     
     session._hero_count = \
             bobbit_active_count + \
@@ -507,6 +524,10 @@ func trigger_tremor() -> void:
     session.last_tremor_time = Sc.time.get_scaled_play_time()
     Sc.gui.hud.control_buttons.set_button_enabled("tremor", false)
     
+    is_in_boulder_selection_mode = false
+    is_in_orc_selection_mode = false
+    is_in_baldrock_selection_mode = false
+    
     shaker.shake(mountain_container, 0.5)
     Sc.time.set_timeout(funcref(self, "_trigger_delayed_tremor"), 0.4)
 
@@ -529,8 +550,11 @@ func trigger_boulder_selection_mode() -> void:
         return
     
     is_in_boulder_selection_mode = true
+    is_in_orc_selection_mode = false
+    is_in_baldrock_selection_mode = false
     
     Sc.gui.hud.control_buttons.set_button_enabled("boulder", false)
+    Sc.gui.hud.control_buttons.set_button_hard_pressed("boulder", true)
 
 
 func trigger_orc_selection_mode() -> void:
@@ -544,8 +568,11 @@ func trigger_orc_selection_mode() -> void:
         return
     
     is_in_orc_selection_mode = true
+    is_in_boulder_selection_mode = false
+    is_in_baldrock_selection_mode = false
     
     Sc.gui.hud.control_buttons.set_button_enabled("orc", false)
+    Sc.gui.hud.control_buttons.set_button_hard_pressed("orc", true)
 
 
 func trigger_baldrock_selection_mode() -> void:
@@ -559,8 +586,11 @@ func trigger_baldrock_selection_mode() -> void:
         return
     
     is_in_baldrock_selection_mode = true
+    is_in_boulder_selection_mode = false
+    is_in_orc_selection_mode = false
     
     Sc.gui.hud.control_buttons.set_button_enabled("baldrock", false)
+    Sc.gui.hud.control_buttons.set_button_hard_pressed("baldrock", true)
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -616,6 +646,7 @@ func _drop_boulder(target: Vector2) -> void:
     is_in_boulder_selection_mode = false
     session.is_boulder_ready = false
     Sc.gui.hud.control_buttons.set_button_enabled("boulder", false)
+    Sc.gui.hud.control_buttons.set_button_hard_pressed("boulder", false)
     
     # FIXME: ------ Get platform removal working.
 #    _remove_platform(surface)
@@ -679,6 +710,7 @@ func _dispatch_orc(surface: Surface) -> void:
     is_in_orc_selection_mode = false
     session.is_orc_ready = false
     Sc.gui.hud.control_buttons.set_button_enabled("orc", false)
+    Sc.gui.hud.control_buttons.set_button_hard_pressed("boulder", false)
     
     _spawn_villain("orc", surface)
 
@@ -693,6 +725,7 @@ func _dispatch_baldrock(surface: Surface) -> void:
     is_in_baldrock_selection_mode = false
     session.is_baldrock_ready = false
     Sc.gui.hud.control_buttons.set_button_enabled("baldrock", false)
+    Sc.gui.hud.control_buttons.set_button_hard_pressed("boulder", false)
     
     _spawn_villain("baldrock", surface)
 
