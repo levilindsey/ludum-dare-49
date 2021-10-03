@@ -512,7 +512,7 @@ func _trigger_heroes_win() -> void:
     pass
     
     if !Sc.level_session.is_ended:
-        quit(true, false)
+        quit(false, false)
 
 
 func get_music_name() -> String:

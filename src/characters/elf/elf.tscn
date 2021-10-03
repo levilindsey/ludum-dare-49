@@ -52,6 +52,7 @@ shadow_item_cull_mask = 12
 collider_shape = SubResource( 2 )
 character_name = "elf"
 __movement_params_identifier__ = "_"
+intra_surface_edge_speed_multiplier = 0.8
 gravity_multiplier = 0.4
 ceiling_crawl_speed_multiplier = 1.5
 jump_boost_multiplier = 0.33
@@ -140,6 +141,7 @@ shape = SubResource( 2 )
 
 [node name="MoveToGoalBehavior" parent="." instance=ExtResource( 4 )]
 only_navigates_reversible_paths = false
-max_pause_between_movements = 1.2
+min_pause_between_movements = 0.15
+max_pause_between_movements = 0.9
 
 [node name="FallBehavior" parent="." instance=ExtResource( 6 )]

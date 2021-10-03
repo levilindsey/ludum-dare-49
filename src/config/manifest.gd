@@ -12,8 +12,8 @@ extends DefaultAppManifest
 func _override_configs_for_current_run() -> void:
     # TODO: Remember to reset these when creating releases.
     
-#    var debug_window_size = ScaffolderGuiConfig.SCREEN_RESOLUTIONS.default
-    var debug_window_size = ScaffolderGuiConfig.SCREEN_RESOLUTIONS.full_screen
+    var debug_window_size = ScaffolderGuiConfig.SCREEN_RESOLUTIONS.default
+#    var debug_window_size = ScaffolderGuiConfig.SCREEN_RESOLUTIONS.full_screen
 #    var debug_window_size = ScaffolderGuiConfig.SCREEN_RESOLUTIONS.google_ads_portrait
     
     var are_annotations_emphasized := false
@@ -274,14 +274,14 @@ var _audio_manifest := {
     is_slow_motion_start_stop_sound_effect_played = true,
 }
 
-var BLUE_DARK := Color("222034")
+var BLUE_DARK := Color("15131f")
 var YELLOW := Color("ffb12b")
 var ORANGE := Color("df7126")
 var RED_DARK := Color("4d1818")
 var CREAM := Color("debd7c")
 
 var COLOR_BACKGROUND := BLUE_DARK
-var COLOR_BACKGROUND_LIGHTER := Color("35334d")
+var COLOR_BACKGROUND_LIGHTER := Color("222034")
 var COLOR_BACKGROUND_DARKER := Color("0a0a0d")
 
 var COLOR_TEXT := Color("eeeeee")
@@ -655,7 +655,7 @@ var _gui_manifest := {
     aspect_ratio_max = 2.0 / 1.0,
     aspect_ratio_min = 1.0 / 2.0,
     camera_smoothing_speed = 10.0,
-    default_camera_zoom = 0.4,
+    default_camera_zoom = 0.7,
     button_height = 56.0,
     button_width = 230.0,
     screen_body_width = 460.0,

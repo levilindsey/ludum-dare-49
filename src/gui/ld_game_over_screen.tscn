@@ -141,7 +141,7 @@ margin_top = 160.0
 margin_right = 1024.0
 margin_bottom = 199.0
 custom_fonts/font = ExtResource( 2 )
-text = "Oh no! The forces of good have prevailed!"
+text = "Oh no, the forces of good have prevailed!"
 
 [node name="Spacer2" parent="VBoxContainer" instance=ExtResource( 5 )]
 anchor_right = 0.0

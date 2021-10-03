@@ -141,7 +141,5 @@ shape = SubResource( 2 )
 
 [node name="MoveToGoalBehavior" parent="." instance=ExtResource( 4 )]
 only_navigates_reversible_paths = false
-min_pause_between_movements = 0.5
-max_pause_between_movements = 2.0
 
 [node name="FallBehavior" parent="." instance=ExtResource( 6 )]
