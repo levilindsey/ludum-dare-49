@@ -8,6 +8,10 @@ var goal: Area2D
 var goal_position: PositionAlongSurface
 var left_spawn_point: Vector2
 var right_spawn_point: Vector2
+var mountain_container: Node2D
+var shaker: Shaker
+var tile_map_original: SimpleTileMap
+var tile_map_copy: TileMap
 
 var ring_bearer: Hero
 
@@ -16,6 +20,12 @@ func _load() -> void:
     ._load()
     
     Sc.gui.hud.create_cooldowns()
+
+
+func _on_intro_choreography_finished() -> void:
+    ._on_intro_choreography_finished()
+    # Immediately hide the welcome panel.
+    _hide_welcome_panel()
 
 
 func _start() -> void:
@@ -35,6 +45,12 @@ func _start() -> void:
     assert(is_instance_valid(right_spawn_point))
     self.right_spawn_point = right_spawn_point.position
     
+    mountain_container = get_node("MountainContainer")
+    assert(is_instance_valid(mountain_container))
+    
+    shaker = Shaker.new()
+    add_child(shaker)
+    
     var crash_test_dummy: CrashTestDummy = \
             graph_parser.crash_test_dummies.bobbit if \
             graph_parser.crash_test_dummies.has("bobbit") else \
@@ -48,6 +64,37 @@ func _start() -> void:
     eye.set_direction(EyeDirection.DOWN)
     
     ._start()
+    
+    _setup_tile_map_copy()
+
+
+func _setup_tile_map_copy() -> void:
+    tile_map_original = get_node("SimpleTileMap")
+    tile_map_original.z_index = -1000
+    
+    tile_map_copy = TileMap.new()
+    tile_map_copy.tile_set = tile_map_original.tile_set
+    tile_map_copy.cell_size = tile_map_original.cell_size
+    tile_map_copy.cell_quadrant_size = tile_map_original.cell_quadrant_size
+    tile_map_copy.collision_layer = 0
+    tile_map_copy.collision_mask = 0
+    
+    var used_cells := tile_map_original.get_used_cells()
+    for cell_position in used_cells:
+        var tile_set_index := tile_map_original.get_cellv(cell_position)
+        var autotile_coord := tile_map_original.get_cell_autotile_coord(
+                cell_position.x,
+                cell_position.y)
+        tile_map_copy.set_cell(
+                cell_position.x,
+                cell_position.y,
+                tile_set_index,
+                false,
+                false,
+                false,
+                autotile_coord)
+    
+    mountain_container.add_child(tile_map_copy)
 
 
 func _parse_schedule() -> void:
@@ -347,11 +394,13 @@ func trigger_tremor() -> void:
     #     boundaries.
     pass
     
+    
+    
     for character_list in characters.values():
         for character in character_list:
             character.on_tremor()
     
-    
+    shaker.shake(mountain_container)
     
     session.last_tremor_time = Sc.time.get_scaled_play_time()
     Sc.gui.hud.control_buttons.set_button_enabled("tremor", false)

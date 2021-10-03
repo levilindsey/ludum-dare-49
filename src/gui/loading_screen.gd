@@ -41,6 +41,7 @@ func _on_transition_in_started(previous_screen: Screen) -> void:
     $VBoxContainer/Text.visible = true
     $VBoxContainer/ClickToContinueMessage.visible = false
     $VBoxContainer/LoadingProgress.visible = true
+    self.mouse_default_cursor_shape = CURSOR_ARROW
 
 
 func _on_transition_in_ended(previous_screen: Screen) -> void:
@@ -171,6 +172,8 @@ func _on_graph_parse_finished() -> void:
     $VBoxContainer/Text.visible = true
     $VBoxContainer/ClickToContinueMessage.visible = true
     $VBoxContainer/LoadingProgress.visible = false
+    
+    self.mouse_default_cursor_shape = CURSOR_POINTING_HAND
     
     Sc.analytics.event(
             "graphs",
