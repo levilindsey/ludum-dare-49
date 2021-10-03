@@ -121,3 +121,15 @@ func on_knock_off() -> void:
 
 func _on_faded() -> void:
     Sc.level.remove_character(self)
+
+
+func _show_exclamation_mark_throttled() -> void:
+    Sc.annotators.add_transient(ExclamationMarkAnnotator.new(
+            self,
+            collider.half_width_height.y + 20.0,
+            primary_annotation_color,
+            secondary_annotation_color,
+            exclamation_mark_width_start,
+            exclamation_mark_length_start,
+            exclamation_mark_stroke_width_start,
+            exclamation_mark_duration))
