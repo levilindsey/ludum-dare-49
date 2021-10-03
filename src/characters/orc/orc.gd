@@ -4,7 +4,7 @@ extends Villain
 
 
 const ENCOUNTER_BOOST_MAGNITUDE := 80.0
-const MAX_ENCOUNTER_COUNT := 6
+const MAX_ENCOUNTER_COUNT := 13
 
 
 func _ready() -> void:

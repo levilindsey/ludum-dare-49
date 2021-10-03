@@ -20,21 +20,21 @@ func _override_configs_for_current_run() -> void:
     
     _metadata.app_version = "0.0.1"
     
-    _metadata.debug = true and OS.is_debug_build()
+    _metadata.debug = false and OS.is_debug_build()
     _metadata.playtest = false
     _metadata.rng_seed = 176
     _metadata.pauses_on_focus_out = false
-    _metadata.also_prints_to_stdout = true
+    _metadata.also_prints_to_stdout = false
     _metadata.logs_character_events = true
     _metadata.logs_analytics_events = false
     _metadata.logs_bootstrap_events = false
     _metadata.logs_device_settings = false
     _metadata.logs_in_editor_events = true
     _metadata.are_all_levels_unlocked = false
-    _metadata.are_test_levels_included = true
+    _metadata.are_test_levels_included = false
     _metadata.is_save_state_cleared_for_debugging = false
-    _metadata.opens_directly_to_level_id = "1"
-    _metadata.is_splash_skipped = true
+    _metadata.opens_directly_to_level_id = ""
+    _metadata.is_splash_skipped = false
     _metadata.are_button_controls_enabled_by_default = false
     
     _surfacer_manifest.are_loaded_surfaces_deeply_validated = false
@@ -50,7 +50,9 @@ func _override_configs_for_current_run() -> void:
     _surfacer_manifest.ignores_platform_graph_save_files = false
     
     _gui_manifest.debug_window_size = debug_window_size
-    _gui_manifest.hud_manifest.is_inspector_enabled_default = false
+    # FIXME: ------------------ I added this to fix an issue with the pause
+    #                           button alignment!
+    _gui_manifest.hud_manifest.is_inspector_enabled_default = true
     _gui_manifest.hud_manifest.is_hud_visible_by_default = true
     
 #    _surfacer_debug_params.limit_parsing = {
@@ -531,16 +533,16 @@ var _settings_item_manifest := {
 var _pause_item_manifest := [
     LevelControlRow,
     TimeControlRow,
-    WavesControlRow,
-    KnockOffsControlRow,
+#    WavesControlRow,
+#    KnockOffsControlRow,
 #    FastestTimeControlRow,
 ]
 
 var _game_over_item_manifest := [
     LevelControlRow,
     TimeControlRow,
-    WavesControlRow,
-    KnockOffsControlRow,
+#    WavesControlRow,
+#    KnockOffsControlRow,
 #    FastestTimeControlRow,
 ]
 
@@ -561,7 +563,7 @@ var _hud_manifest := {
         {
             item_class = TimeControlRow,
             settings_enablement_label = "Time",
-            enabled_by_default = false,
+            enabled_by_default = true,
             settings_group_key = "hud",
         },
         {

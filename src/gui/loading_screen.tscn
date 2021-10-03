@@ -8,6 +8,7 @@
 [ext_resource path="res://addons/scaffolder/assets/fonts/pxlzr_font_s.tres" type="DynamicFont" id=6]
 
 [node name="LoadingScreen" type="VBoxContainer"]
+rect_min_size = Vector2( 1024, 768 )
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -17,16 +18,18 @@ nav_bar_font_size = "L"
 is_back_button_shown = false
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
-margin_right = 320.0
-margin_bottom = 559.0
+margin_left = 282.0
+margin_right = 742.0
+margin_bottom = 535.0
+rect_min_size = Vector2( 460, 0 )
 size_flags_horizontal = 4
 size_flags_vertical = 4
 custom_constants/separation = 16
 
 [node name="LoadingImageWrapper" type="VBoxContainer" parent="VBoxContainer"]
-margin_left = 160.0
-margin_right = 160.0
-margin_bottom = 16.0
+margin_left = 166.0
+margin_right = 294.0
+margin_bottom = 112.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 custom_constants/separation = 0
@@ -34,23 +37,26 @@ custom_constants/separation = 0
 [node name="Spacer2" parent="VBoxContainer/LoadingImageWrapper" instance=ExtResource( 2 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_bottom = 16.0
+margin_left = 64.0
+margin_top = 96.0
+margin_right = 64.0
+margin_bottom = 112.0
 rect_min_size = Vector2( 0, 16 )
 size = Vector2( 0, 16 )
 
 [node name="Text" type="VBoxContainer" parent="VBoxContainer"]
-margin_top = 32.0
-margin_right = 320.0
-margin_bottom = 283.0
+margin_top = 128.0
+margin_right = 460.0
+margin_bottom = 301.0
 
 [node name="ScaffolderLabel" parent="VBoxContainer/Text" instance=ExtResource( 3 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_right = 320.0
-margin_bottom = 231.0
+margin_right = 460.0
+margin_bottom = 153.0
 rect_min_size = Vector2( 320, 0 )
 custom_fonts/font = ExtResource( 6 )
-text = "lorem ipsum foo bar blah blah blah lorem ipsum foo bar blah blah blah lorem ipsum foo bar blah blah blah lorem ipsum foo bar blah blah blah lorem ipsum foo bar blah blah blah lorem ipsum foo bar blah blah blah lorem ipsum foo bar blah blah blah lorem ipsum foo bar blah blah blah lorem ipsum foo bar blah"
+text = "The heroes of the land aim to ascend Mount Oh No to destroy the vessel of your vast power! You must CRUSH THEM! And send them flying! They will FEEL YOUR ANGER!! They think they can scale Mount Oh No?? Not while The Eye of Glower-On is watching!"
 align = 3
 valign = 0
 autowrap = true
@@ -60,41 +66,42 @@ size_override = Vector2( 320, 0 )
 [node name="Spacer3" parent="VBoxContainer/Text" instance=ExtResource( 2 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 160.0
-margin_top = 235.0
-margin_right = 160.0
-margin_bottom = 251.0
+margin_left = 230.0
+margin_top = 157.0
+margin_right = 230.0
+margin_bottom = 173.0
 rect_min_size = Vector2( 0, 16 )
 size = Vector2( 0, 16 )
 
 [node name="ClickToContinueMessage" type="VBoxContainer" parent="VBoxContainer"]
-margin_top = 299.0
-margin_right = 320.0
-margin_bottom = 400.0
+margin_top = 317.0
+margin_right = 460.0
+margin_bottom = 376.0
 
 [node name="ScaffolderLabel" parent="VBoxContainer/ClickToContinueMessage" instance=ExtResource( 3 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_right = 320.0
-margin_bottom = 81.0
+margin_right = 460.0
+margin_bottom = 39.0
 custom_fonts/font = ExtResource( 5 )
-text = "Tap anywhere to continue."
+text = "Tap to continue."
 autowrap = true
 
 [node name="Spacer4" parent="VBoxContainer/ClickToContinueMessage" instance=ExtResource( 2 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 160.0
-margin_top = 85.0
-margin_right = 160.0
-margin_bottom = 101.0
+margin_left = 230.0
+margin_top = 43.0
+margin_right = 230.0
+margin_bottom = 59.0
 rect_min_size = Vector2( 0, 16 )
 size = Vector2( 0, 16 )
 
 [node name="LoadingProgress" type="VBoxContainer" parent="VBoxContainer"]
-margin_top = 416.0
-margin_right = 320.0
-margin_bottom = 559.0
+margin_left = 70.0
+margin_top = 392.0
+margin_right = 390.0
+margin_bottom = 535.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 

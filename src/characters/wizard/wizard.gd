@@ -4,7 +4,7 @@ extends Hero
 
 
 const ENCOUNTER_BOOST_MAGNITUDE := 40.0
-const MAX_ENCOUNTER_COUNT := 20
+const MAX_ENCOUNTER_COUNT := 26
 
 
 func _ready() -> void:

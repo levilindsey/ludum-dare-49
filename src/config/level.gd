@@ -115,7 +115,7 @@ func _parse_schedule() -> void:
     
     for event in session.config.schedule:
         assert(event.has("type"))
-        assert(event.has("time") and event.time is float)
+        assert(event.has("time") and (event.time is float or event.time is int))
         match event.type:
             "bobbit":
                 session._bobbit_spawns.push_back(event)
@@ -532,7 +532,11 @@ func trigger_tremor() -> void:
     is_in_baldrock_selection_mode = false
     
     shaker.shake(mountain_container, 0.5)
-    Sc.time.set_timeout(funcref(self, "_trigger_delayed_tremor"), 0.4)
+    Sc.time.set_timeout(
+            funcref(self, "_trigger_delayed_tremor"),
+            0.4,
+            [],
+            TimeType.PLAY_PHYSICS_SCALED)
     
     Sc.audio.play_sound("tremor")
 

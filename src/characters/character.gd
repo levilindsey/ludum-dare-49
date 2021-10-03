@@ -72,7 +72,7 @@ func _ready() -> void:
     
     var delay := \
             randf() * (_MAX_START_DELAY - _MIN_START_DELAY) + _MIN_START_DELAY
-    Sc.time.set_timeout(funcref(self, "trigger_move"), delay)
+    Sc.time.set_timeout(funcref(self, "trigger_move"), delay, [], TimeType.PLAY_PHYSICS_SCALED)
 
 
 func _process_physics(delta: float) -> void:
@@ -241,7 +241,7 @@ func _fall() -> void:
     
     # This should only be needed in case the FallBehavior incorrectly didn't
     # end up triggering it.
-    Sc.time.set_timeout(funcref(self, "_on_fall_finished"), 0.6, [10000.0])
+    Sc.time.set_timeout(funcref(self, "_on_fall_finished"), 0.6, [10000.0], TimeType.PLAY_PHYSICS_SCALED)
 
 
 func _on_fall_finished(fall_distance: float) -> void:
