@@ -10,11 +10,19 @@ var cooldown_count := 0
 
 func _ready() -> void:
     $BoulderCooldown.visible = false
+    $OrcCooldown.visible = false
+    $BaldrockCooldown.visible = false
     
     cooldown_count = 1
     
     if Sc.level_session.get_is_boulder_in_level():
         $BoulderCooldown.visible = true
+        cooldown_count += 1
+    if Sc.level_session.get_is_orc_in_level():
+        $OrcCooldown.visible = true
+        cooldown_count += 1
+    if Sc.level_session.get_is_baldrock_in_level():
+        $BaldrockCooldown.visible = true
         cooldown_count += 1
     
     Sc.gui.add_gui_to_scale(self)
@@ -65,6 +73,10 @@ func get_cooldown_indicator(indicator_name: String) -> CooldownIndicator:
             return $TremorCooldown as CooldownIndicator
         "boulder":
             return $BoulderCooldown as CooldownIndicator
+        "orc":
+            return $OrcCooldown as CooldownIndicator
+        "baldrock":
+            return $BaldrockCooldown as CooldownIndicator
         _:
             Sc.logger.error()
             return null

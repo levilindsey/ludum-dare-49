@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://src/gui/hud/control_buttons.gd" type="Script" id=1]
 [ext_resource path="res://addons/scaffolder/src/gui/style_box_flat_scalable.gd" type="Script" id=2]
@@ -11,27 +11,72 @@
 [ext_resource path="res://assets/images/gui/boulder_button_active.png" type="Texture" id=9]
 [ext_resource path="res://assets/images/gui/tremor_button_active.png" type="Texture" id=10]
 [ext_resource path="res://assets/images/gui/tremor_button_disabled.png" type="Texture" id=11]
+[ext_resource path="res://assets/images/gui/orc_button_normal.png" type="Texture" id=12]
+[ext_resource path="res://assets/images/gui/orc_button_hover.png" type="Texture" id=13]
+[ext_resource path="res://assets/images/gui/baldrock_button_normal.png" type="Texture" id=14]
+[ext_resource path="res://assets/images/gui/baldrock_button_disabled.png" type="Texture" id=15]
+[ext_resource path="res://assets/images/gui/orc_button_active.png" type="Texture" id=16]
+[ext_resource path="res://assets/images/gui/baldrock_button_active.png" type="Texture" id=17]
+[ext_resource path="res://assets/images/gui/baldrock_button_hover.png" type="Texture" id=18]
+[ext_resource path="res://assets/images/gui/orc_button_disabled.png" type="Texture" id=19]
 
-[sub_resource type="StyleBoxFlat" id=38]
+[sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 1, 1, 1, 0 )
 script = ExtResource( 2 )
 
 [node name="ControlButtons" type="PanelContainer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = 3712.0
+margin_top = 1915.0
+margin_right = 2792.0
+margin_bottom = 1243.0
 mouse_filter = 1
-custom_styles/panel = SubResource( 38 )
+custom_styles/panel = SubResource( 1 )
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
-margin_right = 1024.0
-margin_bottom = 768.0
+margin_right = 296.0
+margin_bottom = 96.0
 custom_constants/separation = 4
+__meta__ = {
+"sc_separation": 4
+}
+
+[node name="BaldrockButton" parent="HBoxContainer" instance=ExtResource( 3 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 96.0
+margin_bottom = 96.0
+rect_min_size = Vector2( 96, 96 )
+texture_normal = ExtResource( 14 )
+texture_pressed = ExtResource( 17 )
+texture_hover = ExtResource( 18 )
+texture_disabled = ExtResource( 15 )
+texture_scale = Vector2( 3, 3 )
+size_override = Vector2( 96, 96 )
+disabled = true
+
+[node name="OrcButton" parent="HBoxContainer" instance=ExtResource( 3 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 100.0
+margin_right = 196.0
+margin_bottom = 96.0
+rect_min_size = Vector2( 96, 96 )
+texture_normal = ExtResource( 12 )
+texture_pressed = ExtResource( 16 )
+texture_hover = ExtResource( 13 )
+texture_disabled = ExtResource( 19 )
+texture_scale = Vector2( 3, 3 )
+size_override = Vector2( 96, 96 )
+disabled = true
 
 [node name="BoulderButton" parent="HBoxContainer" instance=ExtResource( 3 )]
+visible = false
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_top = 336.0
@@ -49,10 +94,9 @@ disabled = true
 [node name="TremorButton" parent="HBoxContainer" instance=ExtResource( 3 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 100.0
-margin_top = 336.0
-margin_right = 196.0
-margin_bottom = 432.0
+margin_left = 200.0
+margin_right = 296.0
+margin_bottom = 96.0
 rect_min_size = Vector2( 96, 96 )
 texture_normal = ExtResource( 5 )
 texture_pressed = ExtResource( 10 )
@@ -62,5 +106,7 @@ texture_scale = Vector2( 3, 3 )
 size_override = Vector2( 96, 96 )
 disabled = true
 
+[connection signal="pressed" from="HBoxContainer/BaldrockButton" to="." method="_on_BaldrockButton_pressed"]
+[connection signal="pressed" from="HBoxContainer/OrcButton" to="." method="_on_OrcButton_pressed"]
 [connection signal="pressed" from="HBoxContainer/BoulderButton" to="." method="_on_BoulderButton_pressed"]
 [connection signal="pressed" from="HBoxContainer/TremorButton" to="." method="_on_TremorButton_pressed"]

@@ -118,7 +118,7 @@ size = Vector2( 0, 10 )
 margin_left = 448.0
 margin_top = 14.0
 margin_right = 576.0
-margin_bottom = 156.0
+margin_bottom = 124.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 __meta__ = {
@@ -137,9 +137,9 @@ size = Vector2( 0, 10 )
 [node name="WinLoseMessage" parent="VBoxContainer" instance=ExtResource( 1 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 160.0
+margin_top = 128.0
 margin_right = 1024.0
-margin_bottom = 199.0
+margin_bottom = 167.0
 custom_fonts/font = ExtResource( 2 )
 text = "Oh no, the forces of good have prevailed!"
 
@@ -147,16 +147,16 @@ text = "Oh no, the forces of good have prevailed!"
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 512.0
-margin_top = 203.0
+margin_top = 171.0
 margin_right = 512.0
-margin_bottom = 213.0
+margin_bottom = 181.0
 rect_min_size = Vector2( 0, 10 )
 size = Vector2( 0, 10 )
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer"]
-margin_top = 217.0
+margin_top = 185.0
 margin_right = 1024.0
-margin_bottom = 217.0
+margin_bottom = 185.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -200,17 +200,17 @@ valign = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 512.0
-margin_top = 221.0
+margin_top = 189.0
 margin_right = 512.0
-margin_bottom = 231.0
+margin_bottom = 199.0
 rect_min_size = Vector2( 0, 10 )
 size = Vector2( 0, 10 )
 
 [node name="AccordionPanel" parent="VBoxContainer" instance=ExtResource( 11 )]
 margin_left = 282.0
-margin_top = 235.0
+margin_top = 203.0
 margin_right = 742.0
-margin_bottom = 291.0
+margin_bottom = 259.0
 rect_min_size = Vector2( 460, 0 )
 
 [node name="AccordionHeader" parent="VBoxContainer/AccordionPanel" instance=ExtResource( 13 )]
@@ -241,17 +241,17 @@ margin_right = 460.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 512.0
-margin_top = 295.0
+margin_top = 263.0
 margin_right = 512.0
-margin_bottom = 315.0
+margin_bottom = 283.0
 rect_min_size = Vector2( 0, 20 )
 size = Vector2( 0, 20 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer"]
 margin_left = 448.0
-margin_top = 319.0
+margin_top = 287.0
 margin_right = 576.0
-margin_bottom = 479.0
+margin_bottom = 447.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 custom_constants/separation = 16
@@ -294,9 +294,9 @@ size_override = Vector2( 56, 56 )
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 512.0
-margin_top = 483.0
+margin_top = 451.0
 margin_right = 512.0
-margin_bottom = 513.0
+margin_bottom = 481.0
 rect_min_size = Vector2( 0, 30 )
 size = Vector2( 0, 30 )
 

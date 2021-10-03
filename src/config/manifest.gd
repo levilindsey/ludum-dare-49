@@ -33,7 +33,7 @@ func _override_configs_for_current_run() -> void:
     _metadata.are_all_levels_unlocked = false
     _metadata.are_test_levels_included = true
     _metadata.is_save_state_cleared_for_debugging = false
-    _metadata.opens_directly_to_level_id = "0"
+    _metadata.opens_directly_to_level_id = ""
     _metadata.is_splash_skipped = true
     _metadata.are_button_controls_enabled_by_default = false
     
@@ -707,9 +707,11 @@ var _slow_motion_manifest := {
 var _input_map = ScaffolderProjectSettings.DEFAULT_INPUT_MAP
 
 var _character_scenes := [
+    preload("res://src/characters/baldrock/baldrock.tscn"),
     preload("res://src/characters/bobbit/bobbit.tscn"),
     preload("res://src/characters/dwarf/dwarf.tscn"),
     preload("res://src/characters/elf/elf.tscn"),
+    preload("res://src/characters/orc/orc.tscn"),
     preload("res://src/characters/wizard/wizard.tscn"),
 ]
 

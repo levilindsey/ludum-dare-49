@@ -10,11 +10,19 @@ var button_count := 0
 
 func _ready() -> void:
     $HBoxContainer/BoulderButton.visible = false
+    $HBoxContainer/BaldrockButton.visible = false
+    $HBoxContainer/OrcButton.visible = false
     
     button_count = 1
     
     if Sc.level_session.get_is_boulder_in_level():
         $HBoxContainer/BoulderButton.visible = true
+        button_count += 1
+    if Sc.level_session.get_is_baldrock_in_level():
+        $HBoxContainer/BaldrockButton.visible = true
+        button_count += 1
+    if Sc.level_session.get_is_orc_in_level():
+        $HBoxContainer/OrcButton.visible = true
         button_count += 1
     
     Sc.gui.add_gui_to_scale(self)
@@ -63,6 +71,10 @@ func get_button(button_name: String) -> ScaffolderTextureButton:
             return $HBoxContainer/TremorButton as ScaffolderTextureButton
         "boulder":
             return $HBoxContainer/BoulderButton as ScaffolderTextureButton
+        "orc":
+            return $HBoxContainer/OrcButton as ScaffolderTextureButton
+        "baldrock":
+            return $HBoxContainer/BaldrockButton as ScaffolderTextureButton
         _:
             Sc.logger.error()
             return null
@@ -74,3 +86,11 @@ func _on_TremorButton_pressed() -> void:
 
 func _on_BoulderButton_pressed() -> void:
     Sc.level.trigger_boulder_selection_mode()
+
+
+func _on_BaldrockButton_pressed() -> void:
+    Sc.level.trigger_baldrock_selection_mode()
+
+
+func _on_OrcButton_pressed() -> void:
+    Sc.level.trigger_orc_selection_mode()

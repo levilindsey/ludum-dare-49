@@ -3,6 +3,8 @@ class_name Level
 extends SurfacerLevel
 
 
+const _BOULDER_PLATFORM_SELECTION_MAX_DISTANCE := 48.0
+
 var eye: Eye
 var goal: Area2D
 var goal_position: PositionAlongSurface
@@ -10,10 +12,15 @@ var left_spawn_point: Vector2
 var right_spawn_point: Vector2
 var mountain_container: Node2D
 var shaker: Shaker
+var crash_test_dummy: CrashTestDummy
 var tile_map_original: SimpleTileMap
 var tile_map_copy: TileMap
 
 var ring_bearer: Hero
+
+var is_in_boulder_selection_mode := false
+var is_in_orc_selection_mode := false
+var is_in_baldrock_selection_mode := false
 
 
 func _load() -> void:
@@ -51,7 +58,7 @@ func _start() -> void:
     shaker = Shaker.new()
     add_child(shaker)
     
-    var crash_test_dummy: CrashTestDummy = \
+    crash_test_dummy = \
             graph_parser.crash_test_dummies.bobbit if \
             graph_parser.crash_test_dummies.has("bobbit") else \
             graph_parser.crash_test_dummies.values()[0]
@@ -115,6 +122,12 @@ func _parse_schedule() -> void:
                 session._wizard_spawns.push_back(event)
             "wave":
                 session._waves.push_back(event)
+            "boulder":
+                session._boulders.push_back(event)
+            "orc":
+                session._orcs.push_back(event)
+            "baldrock":
+                session._baldrocks.push_back(event)
             _:
                 Sc.logger.error()
     
@@ -123,6 +136,9 @@ func _parse_schedule() -> void:
     session._elf_spawns.sort_custom(SpawnTimeComparator, "sort")
     session._wizard_spawns.sort_custom(SpawnTimeComparator, "sort")
     session._waves.sort_custom(SpawnTimeComparator, "sort")
+    session._boulders.sort_custom(SpawnTimeComparator, "sort")
+    session._orcs.sort_custom(SpawnTimeComparator, "sort")
+    session._baldrocks.sort_custom(SpawnTimeComparator, "sort")
 
 
 func _physics_process(_delta: float) -> void:
@@ -195,6 +211,12 @@ func _physics_process(_delta: float) -> void:
     var boulder_remaining_count := _get_event_remaining_count(
             session._boulders,
             session._next_boulder_index)
+    var orc_remaining_count := _get_event_remaining_count(
+            session._orcs,
+            session._next_orc_index)
+    var baldrock_remaining_count := _get_event_remaining_count(
+            session._baldrocks,
+            session._next_baldrock_index)
     var tremor_remaining_count := INF
     
     var bobbit_cooldown_progress := _get_schedule_progress(
@@ -225,13 +247,30 @@ func _physics_process(_delta: float) -> void:
             current_time,
             session._boulders,
             session._next_boulder_index)
+    var orc_cooldown_progress := _get_schedule_progress(
+            current_time,
+            session._orcs,
+            session._next_orc_index)
+    var baldrock_cooldown_progress := _get_schedule_progress(
+            current_time,
+            session._baldrocks,
+            session._next_baldrock_index)
     
     var is_tremor_button_enabled := \
             tremor_cooldown_progress >= 1.0 and \
             !Sc.level_session.is_ended
     var is_boulder_button_enabled := \
             boulder_cooldown_progress >= 1.0 and \
-            !Sc.level_session.is_ended
+            !Sc.level_session.is_ended and \
+            !is_in_boulder_selection_mode
+    var is_orc_button_enabled := \
+            orc_cooldown_progress >= 1.0 and \
+            !Sc.level_session.is_ended and \
+            !is_in_orc_selection_mode
+    var is_baldrock_button_enabled := \
+            baldrock_cooldown_progress >= 1.0 and \
+            !Sc.level_session.is_ended and \
+            !is_in_baldrock_selection_mode
     
     Sc.gui.hud.hero_indicators.update_indicator(
             "bobbit",
@@ -262,6 +301,14 @@ func _physics_process(_delta: float) -> void:
             "boulder",
             boulder_cooldown_progress,
             boulder_remaining_count)
+    Sc.gui.hud.villain_indicators.update_indicator(
+            "orc",
+            orc_cooldown_progress,
+            orc_remaining_count)
+    Sc.gui.hud.villain_indicators.update_indicator(
+            "baldrock",
+            baldrock_cooldown_progress,
+            baldrock_remaining_count)
     
     Sc.gui.hud.control_buttons.set_button_enabled(
             "tremor",
@@ -269,6 +316,12 @@ func _physics_process(_delta: float) -> void:
     Sc.gui.hud.control_buttons.set_button_enabled(
             "boulder",
             is_boulder_button_enabled)
+    Sc.gui.hud.control_buttons.set_button_enabled(
+            "orc",
+            is_orc_button_enabled)
+    Sc.gui.hud.control_buttons.set_button_enabled(
+            "baldrock",
+            is_baldrock_button_enabled)
     
     session._hero_count = \
             bobbit_active_count + \
@@ -358,6 +411,9 @@ func trigger_tremor() -> void:
             Sc.level_session.is_ended:
         return
     
+    
+    
+    
     # FIXME: ----------------------------
     # - Add logic to displace heroes.
     #   - Implement more robust fall-down logic!
@@ -383,16 +439,8 @@ func trigger_tremor() -> void:
     #           - Only boulders and enemies?
     #           - But are super slow (to walk, not jump, they'll need good
     #             in-air acceleration), and take long pauses.
-    # - Add shake animation.
-    #   - Create a copy of the tilemap.
-    #   - Give this a higher z-index.
-    #   - Disable collidability on this copy.
-    #   - Make the other tilemap invisible, but still active for collisions.
-    #   - Leave this duplicate tilemap setup persisting throughout the entire
-    #     level.
-    #   - Can then show shake animation without actually changing collision
-    #     boundaries.
-    pass
+    
+    
     
     
     shaker.shake(mountain_container, 0.5)
@@ -415,14 +463,144 @@ func trigger_boulder_selection_mode() -> void:
             Sc.level_session.is_ended:
         return
     
+    if is_in_boulder_selection_mode:
+        return
+    
+    is_in_boulder_selection_mode = true
+    
+    Sc.gui.hud.control_buttons.set_button_enabled("boulder", false)
+
+
+func trigger_orc_selection_mode() -> void:
+    if Su.is_precomputing_platform_graphs or \
+            Sc.level_session._is_destroyed or \
+            Sc.level_session.is_ended:
+        return
+    
+    if is_in_orc_selection_mode:
+        return
+    
+    is_in_orc_selection_mode = true
+    
+    Sc.gui.hud.control_buttons.set_button_enabled("orc", false)
+
+
+func trigger_baldrock_selection_mode() -> void:
+    if Su.is_precomputing_platform_graphs or \
+            Sc.level_session._is_destroyed or \
+            Sc.level_session.is_ended:
+        return
+    
+    if is_in_baldrock_selection_mode:
+        return
+    
+    is_in_baldrock_selection_mode = true
+    
+    Sc.gui.hud.control_buttons.set_button_enabled("baldrock", false)
+
+
+func _unhandled_input(event: InputEvent) -> void:
+    if Engine.editor_hint:
+        return
+    
+    if !is_in_boulder_selection_mode:
+        return
+    
     # FIXME: ----------------------------
-    # - Tap to choose a platform.
-    # - Use SurfaceFinder to get the best platform close to the tap.
-    # - Include a max-valid-distance threshold.
-    # - Highlight on finger down as a stretch goal?
-    pass
+    # - Highlight on finger down as a stretch goal.
+    
+    if event is InputEventMouseButton or \
+            event is InputEventScreenTouch:
+        var touch_position := Sc.utils.get_level_touch_position(event)
+        var closest_position := \
+                SurfaceFinder.find_closest_position_on_a_surface(
+                        touch_position,
+                        crash_test_dummy,
+                        SurfaceReachability.ANY,
+                        _BOULDER_PLATFORM_SELECTION_MAX_DISTANCE)
+        var is_valid := is_instance_valid(closest_position)
+        var surface := \
+                closest_position.surface if \
+                is_valid else \
+                null
+        Sc.annotators.add_transient(SurfacerClickAnnotator.new(
+                touch_position,
+                surface,
+                is_valid))
+        
+        if is_valid:
+            _drop_boulder(surface)
+
+
+func _drop_boulder(surface: Surface) -> void:
+    assert(surface.side == SurfaceSide.FLOOR)
+    
+    if !is_in_boulder_selection_mode:
+        return
+    
+    is_in_boulder_selection_mode = false
     session.last_boulder_time = Sc.time.get_scaled_play_time()
     Sc.gui.hud.control_buttons.set_button_enabled("boulder", false)
+    
+    # Update the platform-graph surface-exclusion lists.
+    for graph in graph_parser.platform_graphs.values():
+        graph.update_surface_exclusion(surface, true)
+    
+    # -   Replace the old tiles in the tile maps with an empty value.
+    # -   Simply removing the tiles might break some calculations that are
+    #     based on the tile-map's bounds.
+    var empty_tile_id: int = \
+            tile_map_original.tile_set.find_tile_by_name("empty_tile")
+    for tilemap_index in surface.tile_map_indices:
+        var tile_coord := Sc.geometry.get_grid_coord_from_tile_map_index(
+                tilemap_index,
+                tile_map_original)
+        tile_map_original.set_cellv(tile_coord, empty_tile_id)
+        tile_map_copy.set_cellv(tile_coord, empty_tile_id)
+    
+    
+    
+    
+    # FIXME: ---------------------------------
+    # - Animate boulder falling.
+    # - Animate a mini mountain shake.
+    # - Detect collisions with any heros on the way down.
+    # - Detect any nearby heros when the boulder lands.
+    # - Create a boulder explosion animation.
+    # - Create a platform crumble animation.
+    
+    
+    
+    
+    pass
+
+
+func _dispatch_orc(surface: Surface) -> void:
+    assert(surface.side == SurfaceSide.FLOOR)
+    
+    if !is_in_orc_selection_mode:
+        return
+    
+    is_in_orc_selection_mode = false
+    session.last_orc_time = Sc.time.get_scaled_play_time()
+    Sc.gui.hud.control_buttons.set_button_enabled("orc", false)
+    
+    # FIXME: ----------------------------
+    pass
+
+
+func _dispatch_baldrock(surface: Surface) -> void:
+    assert(surface.side == SurfaceSide.FLOOR)
+    
+    if !is_in_baldrock_selection_mode:
+        return
+    
+    is_in_baldrock_selection_mode = false
+    session.last_baldrock_time = Sc.time.get_scaled_play_time()
+    Sc.gui.hud.control_buttons.set_button_enabled("baldrock", false)
+    
+    # FIXME: ----------------------------
+    pass
 
 
 func _update_ring_bearer() -> void:

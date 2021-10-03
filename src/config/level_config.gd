@@ -36,48 +36,47 @@ var level_manifest := {
             {type = "elf", time = 6.7, side = "l"},
         ],
     },
-#    "1": {
-#        name = "Foo",
-#        version = "0.0.1",
-#        is_test_level = false,
-#        sort_priority = 10,
-#        unlock_conditions = "unlocked",
-#        scene_path = LEVELS_PATH_PREFIX + "level1.tscn",
-#        platform_graph_character_names = [
-#            "bobbit",
-#        ],
-#        intro_choreography = [
-#            {
-#                is_player_interaction_enabled = false,
-#                zoom_multiplier = 0.5,
-#            },
-#            {
-#                duration = 0.3,
-#            },
-#            {
-#                destination = SurfacerLevelConfig \
-#                        .INTRO_CHOREOGRAPHY_DESTINATION_GROUP_NAME,
-#            },
-#            {
-#                duration = 0.4,
-#                zoom_multiplier = 1.0,
-#            },
-#            {
-#                is_player_interaction_enabled = true,
-#            },
-#        ],
-#    },
-#    "2": {
-#        name = "Bar",
-#        version = "0.0.1",
-#        is_test_level = false,
-#        sort_priority = 20,
-#        unlock_conditions = "finish_previous_level",
-#        scene_path = LEVELS_PATH_PREFIX + "level2.tscn",
-#        platform_graph_character_names = [
-#            "bobbit",
-#        ],
-#    },
+    "1": {
+        name = "Test",
+        version = "0.0.1",
+        is_test_level = true,
+        sort_priority = -99,
+        unlock_conditions = "unlocked",
+        scene_path = LEVELS_PATH_PREFIX + "level1.tscn",
+        platform_graph_character_names = [
+            "bobbit",
+            "dwarf",
+            "elf",
+            "wizard",
+            "orc",
+            "baldrock",
+        ],
+        tremor_cooldown_period = 6.0,
+        schedule = [
+            {type = "wave", time = 1.0},
+            {type = "bobbit", time = 1.0, side = "l"},
+            
+            {type = "boulder", time = 2.0},
+            
+            {type = "wave", time = 6.0},
+            {type = "bobbit", time = 6.1, side = "r"},
+            {type = "bobbit", time = 7.2, side = "l"},
+            {type = "bobbit", time = 7.3, side = "r"},
+            {type = "wizard", time = 6.4, side = "r"},
+            {type = "bobbit", time = 6.5, side = "r"},
+            {type = "dwarf", time = 6.6, side = "l"},
+            {type = "elf", time = 6.7, side = "l"},
+            
+            {type = "wave", time = 12.0},
+            {type = "elf", time = 12.1, side = "r"},
+            {type = "dwarf", time = 12.2, side = "l"},
+            {type = "bobbit", time = 13.3, side = "r"},
+            {type = "wizard", time = 13.4, side = "r"},
+            {type = "bobbit", time = 12.5, side = "r"},
+            {type = "dwarf", time = 12.6, side = "l"},
+            {type = "elf", time = 12.7, side = "l"},
+        ],
+    },
 }
 
 

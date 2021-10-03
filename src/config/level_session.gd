@@ -11,6 +11,12 @@ var _next_wave_index := 0
 var _boulders := []
 var _next_boulder_index := 0
 
+var _orcs := []
+var _next_orc_index := 0
+
+var _baldrocks := []
+var _next_baldrock_index := 0
+
 var _bobbit_spawns := []
 var _dwarf_spawns := []
 var _elf_spawns := []
@@ -26,6 +32,8 @@ var _is_hero_spawning_finished := false
 
 var last_tremor_time := -INF
 var last_boulder_time := -INF
+var last_orc_time := -INF
+var last_baldrock_time := -INF
 
 var knock_off_count := 0
 
@@ -38,6 +46,12 @@ func reset(id: String) -> void:
     
     _boulders = []
     _next_boulder_index = 0
+    
+    _orcs = []
+    _next_orc_index = 0
+    
+    _baldrocks = []
+    _next_baldrock_index = 0
     
     _bobbit_spawns = []
     _dwarf_spawns = []
@@ -84,3 +98,11 @@ func get_is_hero_in_level(hero_name: String) -> bool:
 
 func get_is_boulder_in_level() -> bool:
     return !_boulders.empty()
+
+
+func get_is_orc_in_level() -> bool:
+    return !_orcs.empty()
+
+
+func get_is_baldrock_in_level() -> bool:
+    return !_baldrocks.empty()
