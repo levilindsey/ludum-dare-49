@@ -45,6 +45,8 @@ func toss(
             TimeType.PLAY_PHYSICS_SCALED,
             funcref(Sc.level, "on_ring_caught"),
             [hero, self])
+    
+    Sc.audio.play_sound("ring")
 
 
 func _interpolate_position(progress: float) -> void:

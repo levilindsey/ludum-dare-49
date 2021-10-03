@@ -533,6 +533,8 @@ func trigger_tremor() -> void:
     
     shaker.shake(mountain_container, 0.5)
     Sc.time.set_timeout(funcref(self, "_trigger_delayed_tremor"), 0.4)
+    
+    Sc.audio.play_sound("tremor")
 
 
 func _trigger_delayed_tremor() -> void:
@@ -855,17 +857,11 @@ func on_hero_knocked_off() -> void:
 
 
 func _trigger_heroes_lose() -> void:
-    # FIXME: -------------------------------
-    pass
-    
     if !Sc.level_session.is_ended:
         quit(true, false)
 
 
 func _trigger_heroes_win() -> void:
-    # FIXME: -------------------------------
-    pass
-    
     if !Sc.level_session.is_ended:
         quit(false, false)
 

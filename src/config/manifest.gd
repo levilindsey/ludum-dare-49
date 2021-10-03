@@ -209,18 +209,22 @@ var _sounds_manifest := [
         path_prefix = "res://addons/scaffolder/assets/sounds/",
     },
     
-    {
-        name = "bobbit_jump",
-        volume_db = 0.0,
-    },
-    {
-        name = "bobbit_land",
-        volume_db = 0.0,
-    },
-    {
-        name = "bobbit_hit_surface",
-        volume_db = 0.0,
-    },
+    { name = "baldrock", volume_db = 0.0 },
+    { name = "bobbit", volume_db = 0.0 },
+    { name = "boulder_land", volume_db = 0.0 },
+    { name = "boulder_launch", volume_db = 0.0 },
+    { name = "dwarf", volume_db = 0.0 },
+    { name = "elf", volume_db = 0.0 },
+    { name = "jump_high", volume_db = 0.0 },
+    { name = "jump_low", volume_db = 0.0 },
+    { name = "jump_lower", volume_db = 0.0 },
+    { name = "knocked_hero", volume_db = 0.0 },
+    { name = "knocked_villain", volume_db = 0.0 },
+    { name = "land", volume_db = 0.0 },
+    { name = "orc", volume_db = 0.0 },
+    { name = "ring", volume_db = 0.0 },
+    { name = "tremor", volume_db = 0.0 },
+    { name = "wizard", volume_db = 0.0 },
 ]
 
 var _music_manifest := [
@@ -251,8 +255,8 @@ var _audio_manifest := {
     default_music_file_suffix = ".ogg",
     default_music_bus_index = 2,
     
-    godot_splash_sound = "achievement",
-    developer_splash_sound = "lock_low",
+    godot_splash_sound = "cadence_lose",
+    developer_splash_sound = "land",
     level_end_sound_win = "cadence_win",
     level_end_sound_lose = "cadence_lose",
     

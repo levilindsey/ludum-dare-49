@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/knocked_villain.wav-ce666113d4465e5a85f9fd366382119d.sample"
+
+[deps]
+
+source_file="res://assets/sounds/knocked_villain.wav"
+dest_files=[ "res://.import/knocked_villain.wav-ce666113d4465e5a85f9fd366382119d.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

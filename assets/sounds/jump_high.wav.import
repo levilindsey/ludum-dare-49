@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/bobbit_jump.wav-71b67fd426f6111a18d56277aef51e48.sample"
+path="res://.import/jump_high.wav-c069c9358b267b289a07296e82fa63e4.sample"
 
 [deps]
 
-source_file="res://assets/sounds/bobbit_jump.wav"
-dest_files=[ "res://.import/bobbit_jump.wav-71b67fd426f6111a18d56277aef51e48.sample" ]
+source_file="res://assets/sounds/jump_high.wav"
+dest_files=[ "res://.import/jump_high.wav-c069c9358b267b289a07296e82fa63e4.sample" ]
 
 [params]
 

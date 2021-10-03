@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/bobbit.wav-f8fc52bcaede0f99be1ba4f42acb38c8.sample"
+
+[deps]
+
+source_file="res://assets/sounds/bobbit.wav"
+dest_files=[ "res://.import/bobbit.wav-f8fc52bcaede0f99be1ba4f42acb38c8.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

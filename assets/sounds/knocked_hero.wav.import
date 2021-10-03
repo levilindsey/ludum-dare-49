@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/bobbit_land.wav-85b143c9d6547138541c9901079a111a.sample"
+path="res://.import/knocked_hero.wav-575c0af01455003ca56d15227c299de4.sample"
 
 [deps]
 
-source_file="res://assets/sounds/bobbit_land.wav"
-dest_files=[ "res://.import/bobbit_land.wav-85b143c9d6547138541c9901079a111a.sample" ]
+source_file="res://assets/sounds/knocked_hero.wav"
+dest_files=[ "res://.import/knocked_hero.wav-575c0af01455003ca56d15227c299de4.sample" ]
 
 [params]
 

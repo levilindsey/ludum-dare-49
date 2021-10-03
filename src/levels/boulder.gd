@@ -31,9 +31,12 @@ func trigger(target: Vector2) -> void:
             DELAY,
             TimeType.PLAY_PHYSICS_SCALED,
             funcref(self, "_on_landed"))
+    
+    Sc.audio.play_sound("boulder_launch")
 
 
 func _on_landed() -> void:
+    Sc.audio.play_sound("boulder_land")
     queue_free()
 
 

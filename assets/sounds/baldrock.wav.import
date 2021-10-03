@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/baldrock.wav-8ff797446e6d27c058fba122b0b6432b.sample"
+
+[deps]
+
+source_file="res://assets/sounds/baldrock.wav"
+dest_files=[ "res://.import/baldrock.wav-8ff797446e6d27c058fba122b0b6432b.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

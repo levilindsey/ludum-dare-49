@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/orc.wav-646b6f6fc3816d44ba9eb5d353b8413b.sample"
+
+[deps]
+
+source_file="res://assets/sounds/orc.wav"
+dest_files=[ "res://.import/orc.wav-646b6f6fc3816d44ba9eb5d353b8413b.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

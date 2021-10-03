@@ -3,6 +3,46 @@ class_name Character
 extends SurfacerCharacter
 
 
+const CHARACTER_SOUNDS := {
+    baldrock = {
+        spawn = "baldrock",
+        land = "land",
+        jump = "jump_lower",
+        knocked = "knocked_villain",
+    },
+    bobbit = {
+        spawn = "bobbit",
+        land = "land",
+        jump = "jump_high",
+        knocked = "knocked_hero",
+    },
+    dwarf = {
+        spawn = "dwarf",
+        land = "land",
+        jump = "jump_low",
+        knocked = "knocked_hero",
+    },
+    elf = {
+        spawn = "elf",
+        land = "land",
+        jump = "jump_low",
+        knocked = "knocked_hero",
+    },
+    orc = {
+        spawn = "orc",
+        land = "land",
+        jump = "jump_low",
+        knocked = "knocked_villain",
+    },
+    wizard = {
+        spawn = "wizard",
+        land = "land",
+        jump = "jump_lower",
+        knocked = "knocked_hero",
+    },
+}
+
+
 const _MIN_START_DELAY := 0.0
 const _MAX_START_DELAY := 2.0
 
@@ -21,6 +61,9 @@ const _BOUNCE_MAGNITUDE_MAX_OFFSET_FOR_HEIGHT_MAX_HEIGHT := -128.0
 
 var is_falling := false
 var is_knocked_off := false
+var was_knocked_off := false
+var just_knocked_off := false
+var has_played_spawn_sound := false
 
 
 func _ready() -> void:
@@ -30,6 +73,11 @@ func _ready() -> void:
     var delay := \
             randf() * (_MAX_START_DELAY - _MIN_START_DELAY) + _MIN_START_DELAY
     Sc.time.set_timeout(funcref(self, "trigger_move"), delay)
+
+
+func _process_physics(delta: float) -> void:
+    just_knocked_off = was_knocked_off != is_knocked_off
+    was_knocked_off = is_knocked_off
 
 
 func trigger_move() -> void:
@@ -108,13 +156,18 @@ func stop() -> void:
 
 
 func _process_sounds() -> void:
-    if just_triggered_jump:
-        Sc.audio.play_sound("bobbit_jump")
+    var sounds_config: Dictionary = CHARACTER_SOUNDS[character_name]
     
-    if surface_state.just_left_air:
-        Sc.audio.play_sound("bobbit_land")
-    elif surface_state.just_touched_surface:
-        Sc.audio.play_sound("bobbit_hit_surface")
+    if !has_played_spawn_sound:
+        Sc.audio.play_sound(sounds_config.spawn)
+        has_played_spawn_sound = true
+    elif just_triggered_jump:
+        Sc.audio.play_sound(sounds_config.jump)
+    elif surface_state.just_left_air or \
+            surface_state.just_touched_surface:
+        Sc.audio.play_sound(sounds_config.land)
+    elif just_knocked_off:
+        Sc.audio.play_sound(sounds_config.knocked)
 
 
 func _process_animation() -> void:
