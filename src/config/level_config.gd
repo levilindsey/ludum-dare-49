@@ -54,7 +54,8 @@ var level_manifest := {
         tremor_cooldown_period = 6.0,
         schedule = [
 #            {type = "wave", time = 1.0},
-            {type = "bobbit", time = 15.0, side = "l"},
+            {type = "bobbit", time = 1.0, side = "l"},
+            {type = "bobbit", time = 4.0, side = "l"},
             
             {type = "boulder", time = 1.0},
             {type = "boulder", time = 3.0},

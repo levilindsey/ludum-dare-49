@@ -4,6 +4,7 @@ extends SurfacerLevel
 
 
 const BOULDER_SCENE := preload("res://src/levels/boulder.tscn")
+const RING_SCENE := preload("res://src/levels/ring.tscn")
 
 const _BOULDER_PLATFORM_SELECTION_MAX_DISTANCE := 48.0 * 48.0
 
@@ -19,6 +20,8 @@ var tile_map_original: SimpleTileMap
 var tile_map_copy: TileMap
 
 var ring_bearer: Hero
+
+var is_ring_tossing := false
 
 var is_in_boulder_selection_mode := false
 var is_in_orc_selection_mode := false
@@ -731,20 +734,64 @@ func _dispatch_baldrock(surface: Surface) -> void:
 
 
 func _update_ring_bearer() -> void:
-    var previous_ring_bearer := ring_bearer
-    var highest_hero_height := INF
+    if is_ring_tossing and \
+            is_instance_valid(ring_bearer) or \
+            session._hero_count == 0:
+        return
     
+    var highest_hero_height := INF
+    var highest_hero: Hero
     for hero_name in ["bobbit", "dwarf", "elf", "wizard"]:
         if characters.has(hero_name):
             for hero in characters[hero_name]:
+                if hero.is_falling or \
+                        hero.is_knocked_off:
+                    continue
+                
                 if hero.position.y < highest_hero_height:
                     highest_hero_height = hero.position.y
-                    ring_bearer = hero
+                    highest_hero = hero
     
-    if is_instance_valid(previous_ring_bearer):
-        previous_ring_bearer.set_is_ring_bearer(false)
-    if is_instance_valid(ring_bearer):
-        ring_bearer.set_is_ring_bearer(true)
+    var toss_target: Hero
+    if highest_hero != ring_bearer and \
+            is_instance_valid(highest_hero):
+        if is_instance_valid(ring_bearer) and \
+                !ring_bearer.is_knocked_off:
+            if highest_hero.position.y < ring_bearer.position.y - 48.0:
+                toss_target = highest_hero
+            else:
+                # Do nothing. Let the previous hero keep it.
+                pass
+        else:
+            toss_target = highest_hero
+    
+    if is_instance_valid(toss_target):
+        var previous_ring_bearer := ring_bearer
+        ring_bearer = toss_target
+        
+        var origin := \
+                previous_ring_bearer.position if \
+                is_instance_valid(previous_ring_bearer) else \
+                left_spawn_point
+        
+        var ring := Sc.utils.add_scene(
+                self,
+                RING_SCENE)
+        ring.toss(origin, ring_bearer)
+        is_ring_tossing = true
+        
+        if is_instance_valid(previous_ring_bearer):
+            previous_ring_bearer.set_is_ring_bearer(false)
+        if is_instance_valid(ring_bearer):
+            ring_bearer.set_is_ring_bearer(true)
+        
+    elif is_instance_valid(ring_bearer) and \
+            ring_bearer.is_knocked_off:
+        var ring := Sc.utils.add_scene(
+                self,
+                RING_SCENE)
+        ring.toss(ring_bearer.position, left_spawn_point)
+        is_ring_tossing = true
 
 
 func toss_ring(
@@ -838,6 +885,13 @@ func get_ring_position() -> Vector2:
     return ring_bearer.position if \
             is_instance_valid(ring_bearer) else \
             Vector2.INF
+
+
+func on_ring_caught(
+        hero: Character,
+        ring) -> void:
+    is_ring_tossing = false
+    ring.queue_free()
 
 
 func _on_Goal_body_entered(hero: Hero) -> void:

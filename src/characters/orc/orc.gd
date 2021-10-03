@@ -35,6 +35,14 @@ func trigger_move() -> void:
 
 
 func _physics_process(_delta: float) -> void:
+    if Su.is_precomputing_platform_graphs or \
+            Sc.level_session._is_destroyed:
+        return
+    
+    if _is_destroyed or \
+            !is_instance_valid(behavior):
+        return
+    
     if behavior.behavior_name == "collide" and \
             !is_instance_valid(Sc.level.ring_bearer) and \
             Sc.level.ring_bearer.behavior_name == "move_to_goal":
