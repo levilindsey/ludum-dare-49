@@ -164,25 +164,37 @@ func _fall() -> void:
     
     current_max_horizontal_speed = bounce_magnitude
     
-    var boost: Vector2
-    if !surface_state.is_grabbing_surface:
-        if velocity.x < 0:
-            boost = bounce_boost_right
-        else:
-            boost = bounce_boost_left
-    else:
-        if randf() > 0.5:
-            boost = bounce_boost_left
-        else:
-            boost = bounce_boost_right
+    # FIXME: --------------- Cleanup? Going to try always away from center.
+#    var boost: Vector2
+#    if !surface_state.is_grabbing_surface:
+#        if velocity.x < 0:
+#            boost = bounce_boost_right
+#        else:
+#            boost = bounce_boost_left
+#    else:
+#        if randf() > 0.5:
+#            boost = bounce_boost_left
+#        else:
+#            boost = bounce_boost_right
+    var boost := \
+            bounce_boost_right if \
+            position.x > 0 else \
+            bounce_boost_left
     
     force_boost(boost)
     
     navigator.stop()
     get_behavior(FallBehavior).trigger(true)
+    
+    # This should only be needed in case the FallBehavior incorrectly didn't
+    # end up triggering it.
+    Sc.time.set_timeout(funcref(self, "_on_fall_finished"), 0.6, [10000.0])
 
 
-func _on_fall_finished(fall_distance) -> void:
+func _on_fall_finished(fall_distance: float) -> void:
+    if !is_falling:
+        return
+    
     is_falling = false
     current_max_horizontal_speed = movement_params.max_horizontal_speed_default
     
@@ -200,11 +212,8 @@ func on_knock_off() -> void:
     
     is_knocked_off = true
     
-    Sc.level.on_hero_knocked_off()
-    
-    if Sc.level.ring_bearer == self:
-        Sc.level._update_ring_bearer()
-        Sc.level.toss_ring(self, Sc.level.ring_bearer)
+    navigator.stop()
+    get_behavior(DefaultBehavior).trigger(true)
     
     Sc.time.tween_property(
             self,

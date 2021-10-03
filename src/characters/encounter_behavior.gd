@@ -84,10 +84,14 @@ func on_collided() -> void:
     
     encounter_count += 1
     
-    if encounter_count == max_encounter_count:
-        character._fall()
-    
-    _pause_mid_movement()
+    # FIXME: ------------------------------
+    # - Get this working so that the characters can bounce off ecah other a
+    #   couple times before falling.
+    character._fall()
+    move_target._fall()
+#    if encounter_count == max_encounter_count:
+#        character._fall()
+#    _pause_mid_movement()
 
 
 func _move() -> int:

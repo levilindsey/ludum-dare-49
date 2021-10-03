@@ -64,9 +64,11 @@ var level_manifest := {
 #            {type = "boulder", time = 20.0},
 #            {type = "boulder", time = 14.0},
 #            {type = "boulder", time = 8.0},
-            {type = "orc", time = 4.0},
+            {type = "orc", time = 2.0},
             {type = "orc", time = 8.0},
-            {type = "baldrock", time = 7.0},
+            {type = "baldrock", time = 2.0},
+            {type = "baldrock", time = 6.0},
+            {type = "baldrock", time = 12.0},
             
 #            {type = "wave", time = 6.0},
             {type = "bobbit", time = 6.1, side = "r"},

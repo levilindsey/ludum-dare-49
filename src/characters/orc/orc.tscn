@@ -141,14 +141,15 @@ hero_name = "orc"
 position = Vector2( 0, -8 )
 shape = SubResource( 2 )
 
-[node name="EncounterBehavior" parent="." instance=ExtResource( 4 )]
-
 [node name="FallBehavior" parent="." instance=ExtResource( 6 )]
 
 [node name="CollideBehavior" parent="." instance=ExtResource( 7 )]
+only_navigates_reversible_paths = false
 returns_to_character_start_position = false
-returns_to_pre_behavior_position = true
+returns_to_pre_behavior_position = false
 min_pause_between_movements = 0.05
 max_pause_between_movements = 0.1
 min_pause_after_movements = 0.0
 max_pause_after_movements = 0.0
+
+[node name="EncounterBehavior" parent="." instance=ExtResource( 4 )]

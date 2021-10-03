@@ -157,22 +157,22 @@ func _physics_process(_delta: float) -> void:
                 current_time,
                 session._bobbit_spawns,
                 session._next_bobbit_spawn_index,
-                "_spawn_character")
+                "_spawn_hero")
         session._next_dwarf_spawn_index = _flush_schedule(
                 current_time,
                 session._dwarf_spawns,
                 session._next_dwarf_spawn_index,
-                "_spawn_character")
+                "_spawn_hero")
         session._next_elf_spawn_index = _flush_schedule(
                 current_time,
                 session._elf_spawns,
                 session._next_elf_spawn_index,
-                "_spawn_character")
+                "_spawn_hero")
         session._next_wizard_spawn_index = _flush_schedule(
                 current_time,
                 session._wizard_spawns,
                 session._next_wizard_spawn_index,
-                "_spawn_character")
+                "_spawn_hero")
         
         session._is_hero_spawning_finished = \
                 session._next_bobbit_spawn_index >= \
@@ -423,7 +423,7 @@ func _get_schedule_progress(
             (next_event_time - previous_event_time)
 
 
-func _spawn_character(spawn_event_config: Dictionary) -> void:
+func _spawn_hero(spawn_event_config: Dictionary) -> void:
     var character_name: String = spawn_event_config.type
     var spawns_on_left_side: bool = \
             !spawn_event_config.has("side") or \
@@ -432,6 +432,23 @@ func _spawn_character(spawn_event_config: Dictionary) -> void:
             left_spawn_point if \
             spawns_on_left_side else \
             right_spawn_point
+    add_character(
+            character_name,
+            spawn_position,
+            false,
+            true)
+
+
+func _spawn_villain(
+        character_name: String,
+        surface: Surface) -> void:
+    assert(surface.side == SurfaceSide.FLOOR)
+    var half_width_height: Vector2 = \
+            Su.movement.character_movement_params[character_name] \
+                .collider.half_width_height
+    var spawn_position: Vector2 = \
+            surface.center + \
+            Vector2(0.0, -half_width_height.y)
     add_character(
             character_name,
             spawn_position,
@@ -657,8 +674,7 @@ func _dispatch_orc(surface: Surface) -> void:
     session.is_orc_ready = false
     Sc.gui.hud.control_buttons.set_button_enabled("orc", false)
     
-    # FIXME: ----------------------------
-    pass
+    _spawn_villain("orc", surface)
 
 
 func _dispatch_baldrock(surface: Surface) -> void:
@@ -672,8 +688,7 @@ func _dispatch_baldrock(surface: Surface) -> void:
     session.is_baldrock_ready = false
     Sc.gui.hud.control_buttons.set_button_enabled("baldrock", false)
     
-    # FIXME: ----------------------------
-    pass
+    _spawn_villain("baldrock", surface)
 
 
 func _update_ring_bearer() -> void:

@@ -21,5 +21,5 @@ func _on_entered_proximity(
         layer_names: Array) -> void:
     assert(target is Hero)
     if behavior.behavior_name != "encounter" and \
-            target.behavior_name == "move_to_goal":
+            target.behavior.behavior_name == "move_to_goal":
         target.trigger_encounter(self)

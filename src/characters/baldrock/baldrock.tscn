@@ -146,8 +146,6 @@ hero_name = "baldrock"
 position = Vector2( 0, -9 )
 shape = SubResource( 2 )
 
-[node name="EncounterBehavior" parent="." instance=ExtResource( 4 )]
-
 [node name="FallBehavior" parent="." instance=ExtResource( 6 )]
 
 [node name="CollideBehavior" parent="." instance=ExtResource( 7 )]
@@ -164,6 +162,8 @@ shape = SubResource( 3 )
 layer = 8
 
 [node name="MoveBackAndForthBehavior" parent="." instance=ExtResource( 9 )]
-only_navigates_reversible_paths = false
+can_leave_start_surface = false
 min_pause_between_movements = 0.0
 max_pause_between_movements = 0.0
+
+[node name="EncounterBehavior" parent="." instance=ExtResource( 4 )]

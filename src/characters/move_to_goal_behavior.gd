@@ -47,7 +47,8 @@ func _move() -> int:
             Sc.level.goal_position,
             false)
     if !is_instance_valid(path):
-        Sc.logger.error()
+        # FIXME: LEFT OFF HERE: ------------------
+        Sc.logger.warning()
         return BehaviorMoveResult.ERROR
     
     if path.edges.size() != 1 or \

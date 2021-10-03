@@ -4,7 +4,7 @@ extends Villain
 
 
 const ENCOUNTER_BOOST_MAGNITUDE := 80.0
-const MAX_ENCOUNTER_COUNT := 3
+const MAX_ENCOUNTER_COUNT := 6
 
 
 func _ready() -> void:
@@ -12,12 +12,26 @@ func _ready() -> void:
     $EncounterBehavior.max_encounter_count = MAX_ENCOUNTER_COUNT
 
 
+# FIXME: Fix this hack.
+var interval := Sc.time.set_interval(funcref(self, "_check_behavior"), 2.0)
+func _destroy() -> void:
+    Sc.time.clear_interval(interval)
+    ._destroy()
+func _check_behavior() -> void:
+    if !surface_state.did_move_last_frame and \
+            !surface_state.did_move_frame_before_last and \
+            is_instance_valid(Sc.level.ring_bearer) and \
+            !is_knocked_off and \
+            !_is_destroyed:
+        trigger_move()
+
+
 func trigger_move() -> void:
-    if !is_instance_valid(Sc.level.ring_bearer):
+    if is_instance_valid(Sc.level.ring_bearer):
         $CollideBehavior.move_target = Sc.level.ring_bearer
         $CollideBehavior.trigger(false)
     else:
-        default_behavior.trigger(false)
+        get_behavior(DefaultBehavior).trigger(false)
 
 
 func _physics_process(_delta: float) -> void:
