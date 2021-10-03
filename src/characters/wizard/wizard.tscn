@@ -7,7 +7,7 @@
 [ext_resource path="res://addons/scaffolder/assets/images/misc/circle_gradient_modified_1024.png" type="Texture" id=5]
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 3, 5 )
+extents = Vector2( 3.5, 8 )
 
 [node name="Wizard" type="KinematicBody2D"]
 collision_layer = 2
@@ -50,28 +50,23 @@ shadow_item_cull_mask = 12
 collider_shape = SubResource( 2 )
 character_name = "wizard"
 __movement_params_identifier__ = "_"
+intra_surface_edge_speed_multiplier = 0.1
 gravity_multiplier = 0.4
 ceiling_crawl_speed_multiplier = 1.5
 jump_boost_multiplier = 0.33
 wall_jump_horizontal_boost_multiplier = 0.4
 wall_fall_horizontal_boost_multiplier = 0.4
-ceiling_fall_velocity_boost = 100.0
 max_horizontal_speed_default_multiplier = 0.6
 max_vertical_speed_multiplier = 0.3
-stops_on_slope = true
-ceiling_crawling_edge_weight_multiplier_override = -1.0
-climb_to_adjacent_surface_edge_weight_multiplier_override = -1.0
 optimizes_edge_jump_positions_at_run_time = false
 optimizes_edge_land_positions_at_run_time = false
 also_optimizes_preselection_path = false
 forces_character_position_to_match_path_at_end = true
 forces_character_velocity_to_zero_at_path_end = true
-default_nav_interrupt_resolution_mode = 4
+includes_discrete_trajectory_state = false
 collision_margin_for_edge_calculations = 1.0
 collision_margin_for_waypoint_positions = 4.0
 prevents_path_ends_from_exceeding_surface_ends_with_offsets = false
-always_tries_to_face_direction_of_motion = true
-max_distance_for_reachable_surface_tracking = 1024.0
 
 [node name="HeroAnimator" parent="." instance=ExtResource( 3 )]
 position = Vector2( 0, -12 )
@@ -130,8 +125,10 @@ animations = {
 hero_name = "wizard"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0, -5 )
+position = Vector2( -0.5, -8 )
 shape = SubResource( 2 )
 
 [node name="MoveToGoalBehavior" parent="." instance=ExtResource( 4 )]
 only_navigates_reversible_paths = false
+min_pause_between_movements = 1.0
+max_pause_between_movements = 6.0

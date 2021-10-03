@@ -35,9 +35,14 @@ func _start() -> void:
     assert(is_instance_valid(right_spawn_point))
     self.right_spawn_point = right_spawn_point.position
     
+    var crash_test_dummy: CrashTestDummy = \
+            graph_parser.crash_test_dummies.bobbit if \
+            graph_parser.crash_test_dummies.has("bobbit") else \
+            graph_parser.crash_test_dummies.values()[0]
+    
     goal_position = SurfaceFinder.find_closest_position_on_a_surface(
             goal.position,
-            graph_parser.crash_test_dummies.bobbit,
+            crash_test_dummy,
             SurfaceReachability.ANY)
     
     eye.set_direction(EyeDirection.DOWN)
