@@ -11,7 +11,7 @@
 extents = Vector2( 3.5, 8 )
 
 [node name="Wizard" type="KinematicBody2D"]
-collision_layer = 2
+collision_layer = 8
 script = ExtResource( 1 )
 character_name = "wizard"
 primary_annotation_color = Color( 0.34902, 0.321569, 0.729412, 1 )
@@ -71,7 +71,6 @@ collision_margin_for_waypoint_positions = 4.0
 prevents_path_ends_from_exceeding_surface_ends_with_offsets = false
 
 [node name="HeroAnimator" parent="." instance=ExtResource( 3 )]
-position = Vector2( 0, -12 )
 animations = {
 "ClimbDown": {
 "name": "ClimbDown",

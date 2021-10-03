@@ -1029,6 +1029,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/scaffolder/src/gui/control_row_list/control_row_list.gd"
 }, {
+"base": "Screen",
+"class": "LdGameOverScreen",
+"language": "GDScript",
+"path": "res://src/gui/ld_game_over_screen.gd"
+}, {
 "base": "WelcomePanel",
 "class": "LdWelcomePanel",
 "language": "GDScript",
@@ -2364,6 +2369,7 @@ _global_script_class_icons={
 "KinematicCollision2DCopy": "",
 "KnockOffsControlRow": "",
 "LabeledControlList": "res://addons/scaffolder/assets/images/editor_icons/control_row_list.png",
+"LdGameOverScreen": "",
 "LdWelcomePanel": "",
 "LeftWallsItemController": "",
 "Legend": "",
@@ -2625,9 +2631,11 @@ pointing/emulate_touch_from_mouse=true
 2d_render/layer_3="background"
 2d_render/layer_4="collidable_tiles"
 2d_physics/layer_1="surfaces_tilemaps"
-2d_physics/layer_2="heroes"
-2d_physics/layer_3="minions"
-2d_physics/layer_4="goal"
+2d_physics/layer_2="IGNORE_fall_through_floors"
+2d_physics/layer_3="IGNORE_walk_through_walls"
+2d_physics/layer_4="heroes"
+2d_physics/layer_5="minions"
+2d_physics/layer_6="goal"
 
 [logging]
 

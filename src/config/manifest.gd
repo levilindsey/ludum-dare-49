@@ -265,9 +265,9 @@ var _audio_manifest := {
     
     are_beats_tracked_by_default = false,
     
-    is_arbitrary_music_speed_change_supported = true,
-    is_music_speed_scaled_with_time_scale = true,
-    is_music_speed_scaled_with_additional_debug_time_scale = true,
+    is_arbitrary_music_speed_change_supported = false,
+    is_music_speed_scaled_with_time_scale = false,
+    is_music_speed_scaled_with_additional_debug_time_scale = false,
     
     is_music_paused_in_slow_motion = true,
     is_tick_tock_played_in_slow_motion = true,
@@ -597,7 +597,8 @@ var _screen_manifest := {
         preload("res://addons/scaffolder/src/gui/screens/data_agreement_screen.tscn"),
         preload("res://addons/scaffolder/src/gui/screens/developer_splash_screen.tscn"),
         preload("res://addons/scaffolder/src/gui/screens/game_screen.tscn"),
-        preload("res://addons/scaffolder/src/gui/screens/game_over_screen.tscn"),
+#        preload("res://addons/scaffolder/src/gui/screens/game_over_screen.tscn"),
+        preload("res://src/gui/ld_game_over_screen.tscn"),
         preload("res://addons/scaffolder/src/gui/screens/godot_splash_screen.tscn"),
         preload("res://addons/scaffolder/src/gui/screens/level_select_screen.tscn"),
         preload("res://addons/scaffolder/src/gui/screens/main_menu_screen.tscn"),

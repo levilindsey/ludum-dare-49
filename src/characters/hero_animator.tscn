@@ -1,8 +1,11 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://assets/images/characters/bobbit_knocked.png" type="Texture" id=1]
 [ext_resource path="res://assets/images/characters/bobbit_fallen.png" type="Texture" id=2]
+[ext_resource path="res://assets/images/characters/bobbit_running.png" type="Texture" id=3]
 [ext_resource path="res://src/characters/hero_animator.gd" type="Script" id=4]
+[ext_resource path="res://assets/images/characters/bobbit_standing.png" type="Texture" id=5]
+[ext_resource path="res://assets/images/characters/bobbit_jump.png" type="Texture" id=6]
 
 [sub_resource type="Animation" id=1]
 resource_name = "ClimbDown"
@@ -405,47 +408,64 @@ animations = {
 
 [node name="Walk" type="Sprite" parent="."]
 visible = false
+position = Vector2( 0, -12 )
+texture = ExtResource( 3 )
 hframes = 4
 
 [node name="ClimbUp" type="Sprite" parent="."]
 visible = false
-hframes = 2
+position = Vector2( 0, -12 )
+texture = ExtResource( 5 )
+hframes = 4
 
 [node name="ClimbDown" type="Sprite" parent="."]
 visible = false
-hframes = 2
+position = Vector2( 0, -12 )
+texture = ExtResource( 5 )
+hframes = 4
 
 [node name="CrawlOnCeiling" type="Sprite" parent="."]
 visible = false
 rotation = -1.5708
-hframes = 2
+texture = ExtResource( 5 )
+hframes = 4
 
 [node name="Rest" type="Sprite" parent="."]
+position = Vector2( 0, -12 )
+texture = ExtResource( 5 )
 hframes = 4
 
 [node name="RestOnWall" type="Sprite" parent="."]
 visible = false
-hframes = 2
+texture = ExtResource( 5 )
+hframes = 4
 
 [node name="RestOnCeiling" type="Sprite" parent="."]
 visible = false
 rotation = 3.14159
 scale = Vector2( -1, 1 )
-hframes = 2
+texture = ExtResource( 5 )
+hframes = 4
 
 [node name="JumpFall" type="Sprite" parent="."]
 visible = false
+position = Vector2( 0, -12 )
+texture = ExtResource( 6 )
 
 [node name="JumpRise" type="Sprite" parent="."]
 visible = false
+position = Vector2( 0, -12 )
+texture = ExtResource( 6 )
 
 [node name="Knocked" type="Sprite" parent="."]
 visible = false
+position = Vector2( 0, -2 )
 texture = ExtResource( 1 )
 hframes = 2
 
 [node name="Fallen" type="Sprite" parent="."]
 visible = false
+position = Vector2( 0, -2 )
 texture = ExtResource( 2 )
 
 [node name="RESET" type="Sprite" parent="."]
