@@ -166,12 +166,12 @@ var _sounds_manifest := [
     {
         name = "cadence_win",
         volume_db = 10.0,
-        path_prefix = "res://addons/scaffolder/assets/sounds/",
+        path_prefix = "res://assets/sounds/",
     },
     {
         name = "cadence_lose",
         volume_db = 10.0,
-        path_prefix = "res://addons/scaffolder/assets/sounds/",
+        path_prefix = "res://assets/sounds/",
     },
     {
         name = "menu_select",
@@ -225,16 +225,16 @@ var _sounds_manifest := [
 
 var _music_manifest := [
     {
-        name = "on_a_quest",
-        path_prefix = "res://addons/scaffolder/assets/music/",
-        volume_db = 0.0,
+        name = "mount_oh_no",
+        path_prefix = "res://assets/music/",
+        volume_db = 6.0,
         bpm = 75,
         meter = 4,
     },
     {
-        name = "pause_menu",
-        path_prefix = "res://addons/scaffolder/assets/music/",
-        volume_db = 0.0,
+        name = "thump_thump",
+        path_prefix = "res://assets/music/",
+        volume_db = 9.0,
         bpm = 56.25,
         meter = 4,
     },
@@ -256,10 +256,10 @@ var _audio_manifest := {
     level_end_sound_win = "cadence_win",
     level_end_sound_lose = "cadence_lose",
     
-    main_menu_music = "on_a_quest",
-    game_over_music = "pause_menu",
-    pause_menu_music = "pause_menu",
-    default_level_music = "on_a_quest",
+    main_menu_music = "mount_oh_no",
+    game_over_music = "thump_thump",
+    pause_menu_music = "thump_thump",
+    default_level_music = "mount_oh_no",
     
     pauses_level_music_on_pause = true,
     

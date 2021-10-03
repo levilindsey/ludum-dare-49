@@ -871,13 +871,10 @@ func _trigger_heroes_win() -> void:
 
 
 func get_music_name() -> String:
-    # FIXME: BOOTSTRAP: -------------------
-    return "on_a_quest"
+    return "mount_oh_no"
 
 
 func get_slow_motion_music_name() -> String:
-    # FIXME: BOOTSTRAP: -------------------
-    # FIXME: Add slo-mo music
     return ""
 
 
