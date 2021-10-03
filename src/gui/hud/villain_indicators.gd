@@ -55,7 +55,10 @@ func _on_gui_scale_changed_deferred() -> void:
             HudKeyValueBox.SEPARATION * Sc.gui.scale
     rect_position.y = \
             Sc.gui.hud.hud_key_value_list.get_bottom_coordinate() + \
-            (HudKeyValueBox.SEPARATION * Sc.gui.scale) * 3.0
+            (HudKeyValueBox.SEPARATION * Sc.gui.scale) * 3.0 if \
+            is_instance_valid(Sc.gui.hud.hud_key_value_list) else \
+            (HudKeyValueBox.SEPARATION * Sc.gui.scale)
+            
 
 
 func update_indicator(

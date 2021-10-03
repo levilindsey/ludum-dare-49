@@ -557,13 +557,13 @@ var _hud_manifest := {
         {
             item_class = TimeControlRow,
             settings_enablement_label = "Time",
-            enabled_by_default = true,
+            enabled_by_default = false,
             settings_group_key = "hud",
         },
         {
             item_class = WavesControlRow,
             settings_enablement_label = "Wave",
-            enabled_by_default = true,
+            enabled_by_default = false,
             settings_group_key = "hud",
             animation = {
                 modulate_color = HUD_KEY_VALUE_BOX_MODULATE_COLOR,
@@ -573,7 +573,7 @@ var _hud_manifest := {
         {
             item_class = KnockOffsControlRow,
             settings_enablement_label = "Knock-offs",
-            enabled_by_default = true,
+            enabled_by_default = false,
             settings_group_key = "hud",
             animation = {
                 modulate_color = HUD_KEY_VALUE_BOX_MODULATE_COLOR,

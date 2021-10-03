@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/eye.png-d74c36dad914e2013dcd34bc511d19cd.stex"
+path="res://.import/eye.png-0e7c1c097c379baf66a2a9ea6575afc0.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/device_icons/eye.png"
-dest_files=[ "res://.import/eye.png-d74c36dad914e2013dcd34bc511d19cd.stex" ]
+source_file="res://assets/images/eye.png"
+dest_files=[ "res://.import/eye.png-0e7c1c097c379baf66a2a9ea6575afc0.stex" ]
 
 [params]
 
