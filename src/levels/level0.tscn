@@ -42,6 +42,7 @@ margin_left = -896.0
 margin_top = -768.0
 margin_right = 896.0
 margin_bottom = -256.0
+mouse_filter = 2
 color = Color( 0.0823529, 0.0745098, 0.121569, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -52,6 +53,7 @@ margin_left = -896.0
 margin_top = 256.0
 margin_right = 896.0
 margin_bottom = 768.0
+mouse_filter = 2
 color = Color( 0.0823529, 0.0745098, 0.121569, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -62,6 +64,7 @@ margin_left = 256.0
 margin_top = -320.0
 margin_right = 896.0
 margin_bottom = 318.0
+mouse_filter = 2
 color = Color( 0.0823529, 0.0745098, 0.121569, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -72,6 +75,7 @@ margin_left = -896.0
 margin_top = -320.0
 margin_right = -256.0
 margin_bottom = 318.0
+mouse_filter = 2
 color = Color( 0.0823529, 0.0745098, 0.121569, 1 )
 __meta__ = {
 "_edit_use_anchors_": false

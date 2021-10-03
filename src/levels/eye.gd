@@ -18,6 +18,10 @@ var _last_narrow_start_time := -INF
 
 
 func _process(_delta: float) -> void:
+    if Su.is_precomputing_platform_graphs or \
+            Sc.level_session._is_destroyed:
+        return
+    
     _track_ring()
 
 

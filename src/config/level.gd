@@ -79,6 +79,10 @@ func _parse_schedule() -> void:
 
 
 func _physics_process(_delta: float) -> void:
+    if Su.is_precomputing_platform_graphs or \
+            Sc.level_session._is_destroyed:
+        return
+    
     var current_time: float = Sc.time.get_scaled_play_time()
     
     if !session._is_hero_spawning_finished:
@@ -175,8 +179,12 @@ func _physics_process(_delta: float) -> void:
             session._boulders,
             session._next_boulder_index)
     
-    var is_tremor_button_enabled := tremor_cooldown_progress >= 1.0
-    var is_boulder_button_enabled := boulder_cooldown_progress >= 1.0
+    var is_tremor_button_enabled := \
+            tremor_cooldown_progress >= 1.0 and \
+            !Sc.level_session.is_ended
+    var is_boulder_button_enabled := \
+            boulder_cooldown_progress >= 1.0 and \
+            !Sc.level_session.is_ended
     
     Sc.gui.hud.hero_indicators.update_indicator(
             "bobbit",
@@ -298,6 +306,11 @@ func _trigger_wave(wave_event_config: Dictionary) -> void:
 
 
 func trigger_tremor() -> void:
+    if Su.is_precomputing_platform_graphs or \
+            Sc.level_session._is_destroyed or \
+            Sc.level_session.is_ended:
+        return
+    
     # FIXME: ----------------------------
     # - Add logic to displace heroes.
     #   - Implement more robust fall-down logic!
@@ -333,11 +346,23 @@ func trigger_tremor() -> void:
     #   - Can then show shake animation without actually changing collision
     #     boundaries.
     pass
+    
+    for character_list in characters.values():
+        for character in character_list:
+            character.on_tremor()
+    
+    
+    
     session.last_tremor_time = Sc.time.get_scaled_play_time()
     Sc.gui.hud.control_buttons.set_button_enabled("tremor", false)
 
 
 func trigger_boulder_selection_mode() -> void:
+    if Su.is_precomputing_platform_graphs or \
+            Sc.level_session._is_destroyed or \
+            Sc.level_session.is_ended:
+        return
+    
     # FIXME: ----------------------------
     # - Tap to choose a platform.
     # - Use SurfaceFinder to get the best platform close to the tap.
@@ -459,6 +484,11 @@ func get_ring_position() -> Vector2:
 
 
 func _on_Goal_body_entered(hero: Hero) -> void:
+    if Su.is_precomputing_platform_graphs or \
+            Sc.level_session._is_destroyed or \
+            Sc.level_session.is_ended:
+        return
+    
 #    hero.stop()
     _trigger_heroes_win()
 

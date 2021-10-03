@@ -47,7 +47,7 @@ func _move() -> int:
             Sc.level.goal_position,
             false)
     if !is_instance_valid(path):
-        # FIXME: LEFT OFF HERE: ------------------------
+        # FIXME: LEFT OFF HERE: -------------------------
 #        Sc.logger.error()
         return BehaviorMoveResult.ERROR
     

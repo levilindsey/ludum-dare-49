@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://src/characters/dwarf/dwarf.gd" type="Script" id=1]
 [ext_resource path="res://addons/surfacer/src/platform_graph/edge/models/movement_params.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/characters/hero_animator.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/characters/move_to_goal_behavior.tscn" type="PackedScene" id=4]
 [ext_resource path="res://addons/scaffolder/assets/images/misc/circle_gradient_modified_1024.png" type="Texture" id=5]
+[ext_resource path="res://src/characters/fall_behavior.tscn" type="PackedScene" id=6]
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 3, 5 )
@@ -33,6 +34,7 @@ logs_verbose_events = false
 logs_verbose_navigator_events = false
 
 [node name="Glow" type="Light2D" parent="."]
+visible = false
 position = Vector2( 0, -4 )
 scale = Vector2( 0.04, 0.04 )
 texture = ExtResource( 5 )
@@ -86,6 +88,11 @@ animations = {
 "speed": 1.0,
 "sprite_name": "CrawlOnCeiling"
 },
+"Fallen": {
+"name": "Fallen",
+"speed": 1.0,
+"sprite_name": "Fallen"
+},
 "JumpFall": {
 "name": "JumpFall",
 "speed": 1.0,
@@ -95,6 +102,11 @@ animations = {
 "name": "JumpRise",
 "speed": 1.0,
 "sprite_name": "JumpRise"
+},
+"Knocked": {
+"name": "Knocked",
+"speed": 1.0,
+"sprite_name": "Knocked"
 },
 "RESET": {
 "name": "RESET",
@@ -130,5 +142,7 @@ shape = SubResource( 2 )
 
 [node name="MoveToGoalBehavior" parent="." instance=ExtResource( 4 )]
 only_navigates_reversible_paths = false
-min_pause_between_movements = 0.5
-max_pause_between_movements = 2.0
+min_pause_between_movements = 0.3
+max_pause_between_movements = 1.5
+
+[node name="FallBehavior" parent="." instance=ExtResource( 6 )]
