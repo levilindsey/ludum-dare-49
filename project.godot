@@ -104,6 +104,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/characters/bobbit/bobbit.gd"
 }, {
+"base": "Node2D",
+"class": "Boulder",
+"language": "GDScript",
+"path": "res://src/levels/boulder.gd"
+}, {
 "base": "CheckboxControlRow",
 "class": "ButtonControlsControlRow",
 "language": "GDScript",
@@ -2209,6 +2214,7 @@ _global_script_class_icons={
 "Behavior": "",
 "BehaviorMoveResult": "",
 "Bobbit": "",
+"Boulder": "",
 "ButtonControlsControlRow": "",
 "CameraController": "",
 "CameraPanController": "",

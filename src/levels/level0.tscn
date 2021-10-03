@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://src/config/level.gd" type="Script" id=1]
 [ext_resource path="res://src/levels/background.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/levels/simple_tile_map.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/levels/mountain.tscn" type="PackedScene" id=4]
 [ext_resource path="res://src/levels/eye.tscn" type="PackedScene" id=5]
+[ext_resource path="res://src/levels/boulder.tscn" type="PackedScene" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 24, 8 )
@@ -85,5 +86,8 @@ color = Color( 0.0823529, 0.0745098, 0.121569, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Boulder" parent="." instance=ExtResource( 6 )]
+position = Vector2( -104, 16 )
 
 [connection signal="body_entered" from="Goal" to="." method="_on_Goal_body_entered"]

@@ -3,6 +3,8 @@ class_name Level
 extends SurfacerLevel
 
 
+const BOULDER_SCENE := preload("res://src/levels/boulder.tscn")
+
 const _BOULDER_PLATFORM_SELECTION_MAX_DISTANCE := 48.0
 
 var eye: Eye
@@ -576,6 +578,11 @@ func _unhandled_input(event: InputEvent) -> void:
     if event is InputEventMouseButton or \
             event is InputEventScreenTouch:
         var touch_position := Sc.utils.get_level_touch_position(event)
+        
+        if is_in_boulder_selection_mode:
+            _drop_boulder(touch_position)
+            return
+        
         var closest_position := \
                 SurfaceFinder.find_closest_position_on_a_surface(
                         touch_position,
@@ -593,9 +600,7 @@ func _unhandled_input(event: InputEvent) -> void:
                 is_valid))
         
         if is_valid:
-            if is_in_boulder_selection_mode:
-                _drop_boulder(surface)
-            elif is_in_orc_selection_mode:
+            if is_in_orc_selection_mode:
                 _dispatch_orc(surface)
             elif is_in_baldrock_selection_mode:
                 _dispatch_baldrock(surface)
@@ -603,9 +608,7 @@ func _unhandled_input(event: InputEvent) -> void:
                 Sc.logger.error()
 
 
-func _drop_boulder(surface: Surface) -> void:
-    assert(surface.side == SurfaceSide.FLOOR)
-    
+func _drop_boulder(target: Vector2) -> void:
     if !is_in_boulder_selection_mode or \
             !session.is_boulder_ready:
         return
@@ -614,14 +617,17 @@ func _drop_boulder(surface: Surface) -> void:
     session.is_boulder_ready = false
     Sc.gui.hud.control_buttons.set_button_enabled("boulder", false)
     
-    _remove_platform(surface)
+    # FIXME: ------ Get platform removal working.
+#    _remove_platform(surface)
     
+    var boulder := Sc.utils.add_scene(
+            self,
+            BOULDER_SCENE)
+    boulder.trigger(target)
     
+    shaker.shake(mountain_container, 0.4)
     
     # FIXME: ---------------------------------
-    # - Animate boulder falling.
-    # - Animate a mini mountain shake.
-    # - Detect collisions with any heros on the way down.
     # - Detect any nearby heros when the boulder lands.
     # - Create a boulder explosion animation.
     # - Create a platform crumble animation.
