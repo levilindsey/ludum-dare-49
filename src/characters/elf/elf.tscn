@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://src/characters/elf/elf.gd" type="Script" id=1]
 [ext_resource path="res://addons/surfacer/src/platform_graph/edge/models/movement_params.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://src/characters/move_to_goal_behavior.tscn" type="PackedScene" id=4]
 [ext_resource path="res://addons/scaffolder/assets/images/misc/circle_gradient_modified_1024.png" type="Texture" id=5]
 [ext_resource path="res://src/characters/fall_behavior.tscn" type="PackedScene" id=6]
+[ext_resource path="res://src/characters/encounter_behavior.tscn" type="PackedScene" id=7]
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 3, 9 )
@@ -145,3 +146,5 @@ min_pause_between_movements = 0.15
 max_pause_between_movements = 0.9
 
 [node name="FallBehavior" parent="." instance=ExtResource( 6 )]
+
+[node name="EncounterBehavior" parent="." instance=ExtResource( 7 )]

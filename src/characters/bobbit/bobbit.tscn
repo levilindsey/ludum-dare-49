@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://src/characters/bobbit/bobbit.gd" type="Script" id=1]
 [ext_resource path="res://addons/surfacer/src/platform_graph/edge/models/movement_params.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://src/characters/move_to_goal_behavior.tscn" type="PackedScene" id=4]
 [ext_resource path="res://addons/scaffolder/assets/images/misc/circle_gradient_modified_1024.png" type="Texture" id=5]
 [ext_resource path="res://src/characters/fall_behavior.tscn" type="PackedScene" id=6]
+[ext_resource path="res://src/characters/encounter_behavior.tscn" type="PackedScene" id=7]
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 3, 4.5 )
@@ -14,6 +15,24 @@ extents = Vector2( 3, 4.5 )
 collision_layer = 8
 script = ExtResource( 1 )
 character_name = "bobbit"
+primary_annotation_color = Color( 0, 0, 0, 1 )
+secondary_annotation_color = Color( 1, 1, 1, 1 )
+navigation_annotation_color_override = Color( 0, 0, 0, 1 )
+position_annotation_color_override = Color( 0, 0, 0, 1 )
+exclamation_mark_width_start = 4.0
+exclamation_mark_length_start = 24.0
+exclamation_mark_stroke_width_start = 1.2
+exclamation_mark_duration = 1.8
+exclamation_mark_throttle_interval = 1.0
+logs_common_debugging_events = false
+logs_custom_events = true
+logs_behavior_events = false
+logs_navigator_events = false
+logs_collision_events = false
+logs_surface_events = false
+logs_action_events = false
+logs_verbose_events = false
+logs_verbose_navigator_events = false
 
 [node name="Glow" type="Light2D" parent="."]
 visible = false
@@ -126,3 +145,5 @@ only_navigates_reversible_paths = false
 min_pause_between_movements = 0.1
 
 [node name="FallBehavior" parent="." instance=ExtResource( 6 )]
+
+[node name="EncounterBehavior" parent="." instance=ExtResource( 7 )]

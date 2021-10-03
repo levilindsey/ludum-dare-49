@@ -36,6 +36,73 @@ func trigger_move() -> void:
     Sc.logger.error("Abstract Character.trigger_move is not implemented.")
 
 
+func trigger_encounter(enemy: Character) -> void:
+    if self.behavior is EncounterBehavior or \
+            enemy.behavior is EncounterBehavior or \
+            self.behavior is FallBehavior or \
+            enemy.behavior is FallBehavior:
+        return
+    
+    var displacement := enemy.position - self.position
+    var is_enemy_to_the_left := displacement.x < 0
+    var is_enemy_moving := enemy.velocity.x != 0
+    var is_enemy_moving_left := enemy.velocity.x < 0
+    var is_self_moving := self.velocity.x != 0
+    var is_self_moving_left := self.velocity.x < 0
+    
+    var is_enemy_approaching := \
+            is_enemy_moving and \
+            (is_enemy_to_the_left != is_enemy_moving_left)
+    var is_self_approaching := \
+            is_self_moving and \
+            (is_enemy_to_the_left == is_self_moving_left)
+    
+    var self_target_surface: Surface
+    if self.navigation_state.is_currently_navigating:
+        self_target_surface = \
+                self.navigator.edge.end_position_along_surface.surface
+    if !is_instance_valid(self_target_surface):
+        self_target_surface = \
+                self.surface_state.last_position_along_surface.surface
+    
+    var enemy_target_surface: Surface
+    if enemy.navigation_state.is_currently_navigating:
+        enemy_target_surface = \
+                enemy.navigator.edge.end_position_along_surface.surface
+    if !is_instance_valid(enemy_target_surface):
+        enemy_target_surface = \
+                enemy.surface_state.last_position_along_surface.surface
+    
+    var encounter_surface: Surface
+    if is_self_approaching:
+        encounter_surface = self_target_surface
+    elif is_enemy_approaching:
+        encounter_surface = enemy_target_surface
+    elif is_self_moving:
+        encounter_surface = self_target_surface
+    elif is_enemy_moving:
+        encounter_surface = enemy_target_surface
+    else:
+        encounter_surface = enemy_target_surface
+    
+    var self_encounter_behavior: EncounterBehavior = \
+            self.get_behavior(EncounterBehavior)
+    var enemy_encounter_behavior: EncounterBehavior = \
+            enemy.get_behavior(EncounterBehavior)
+    
+    self_encounter_behavior.is_initiator = true
+    enemy_encounter_behavior.is_initiator = true
+    
+    self_encounter_behavior.encounter_surface = encounter_surface
+    enemy_encounter_behavior.encounter_surface = encounter_surface
+    
+    self_encounter_behavior.move_target = enemy
+    enemy_encounter_behavior.move_target = self
+    
+    self_encounter_behavior.trigger(false)
+    enemy_encounter_behavior.trigger(false)
+
+
 func stop() -> void:
     default_behavior.trigger(false)
 

@@ -74,11 +74,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/scaffolder/src/annotators/annotator_type.gd"
 }, {
-"base": "Behavior",
-"class": "AttackBehavior",
-"language": "GDScript",
-"path": "res://src/characters/attack_behavior.gd"
-}, {
 "base": "Node",
 "class": "Audio",
 "language": "GDScript",
@@ -648,6 +643,11 @@ _global_script_classes=[ {
 "class": "Elf",
 "language": "GDScript",
 "path": "res://src/characters/elf/elf.gd"
+}, {
+"base": "Behavior",
+"class": "EncounterBehavior",
+"language": "GDScript",
+"path": "res://src/characters/encounter_behavior.gd"
 }, {
 "base": "TransientAnnotator",
 "class": "ExclamationMarkAnnotator",
@@ -2203,7 +2203,6 @@ _global_script_class_icons={
 "AnnotationElement": "",
 "AnnotationElementType": "",
 "AnnotatorType": "",
-"AttackBehavior": "res://addons/surfacer/assets/images/editor_icons/collide_behavior.png",
 "Audio": "",
 "Baldrock": "",
 "BeatTracker": "",
@@ -2318,6 +2317,7 @@ _global_script_class_icons={
 "EdgesWithoutIncreasingJumpHeightGroupItemController": "",
 "ElementAnnotator": "",
 "Elf": "",
+"EncounterBehavior": "res://addons/surfacer/assets/images/editor_icons/collide_behavior.png",
 "ExclamationMarkAnnotator": "",
 "Eye": "",
 "EyeDirection": "",
