@@ -13,7 +13,7 @@ var control_buttons: ControlButtons
 
 
 func _ready() -> void:
-    self.modulate.a = 0.6
+    self.modulate.a = 0.8
 
 
 func create_cooldowns() -> void:

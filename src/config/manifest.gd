@@ -274,17 +274,23 @@ var _audio_manifest := {
     is_slow_motion_start_stop_sound_effect_played = true,
 }
 
-var COLOR_BACKGROUND := Color("453d30")
-var COLOR_BACKGROUND_LIGHTER := Color("574d3d")
-var COLOR_BACKGROUND_DARKER := Color("362f25")
+var BLUE_DARK := Color("222034")
+var YELLOW := Color("ffb12b")
+var ORANGE := Color("df7126")
+var RED_DARK := Color("4d1818")
+var CREAM := Color("debd7c")
+
+var COLOR_BACKGROUND := BLUE_DARK
+var COLOR_BACKGROUND_LIGHTER := Color("35334d")
+var COLOR_BACKGROUND_DARKER := Color("0a0a0d")
 
 var COLOR_TEXT := Color("eeeeee")
-var COLOR_HEADER := Color("faca7d")
-var COLOR_FOCUS := Color("faca7d")
+var COLOR_HEADER := YELLOW
+var COLOR_FOCUS := YELLOW
 
-var COLOR_BUTTON := Color("c27e10")
-var COLOR_BUTTON_LIGHTER := Color("eba534")
-var COLOR_BUTTON_DARKER := Color("734905")
+var COLOR_BUTTON := ORANGE
+var COLOR_BUTTON_LIGHTER := YELLOW
+var COLOR_BUTTON_DARKER := RED_DARK
 
 var COLOR_SHADOW := Color("88000000")
 
