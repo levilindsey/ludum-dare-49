@@ -701,6 +701,9 @@ var _input_map = ScaffolderProjectSettings.DEFAULT_INPUT_MAP
 
 var _character_scenes := [
     preload("res://src/characters/bobbit/bobbit.tscn"),
+    preload("res://src/characters/dwarf/dwarf.tscn"),
+    preload("res://src/characters/elf/elf.tscn"),
+    preload("res://src/characters/wizard/wizard.tscn"),
 ]
 
 var _character_manifest := {

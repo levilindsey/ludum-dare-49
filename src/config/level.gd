@@ -295,8 +295,29 @@ func _trigger_wave(wave_event_config: Dictionary) -> void:
 func trigger_tremor() -> void:
     # FIXME: ----------------------------
     # - Add logic to displace heroes.
+    #   - Implement more robust fall-down logic!
+    #     - Or, maybe they don't need nav from in-air at all, and just grab
+    #       whatever they touch first?
     #   - Decide whether they should be ko'd instantly, or if they have a chance
     #     to land on a nearby platform.
+    #     - Three options:
+    #       - They fall nearly straight down from their current position.
+    #         - If standing on a platform, they fall down through/beyond it.
+    #         - If jumping, they fall straightish from where they are.
+    #         - If there is a landing platform that isn't too far away, they
+    #           survive and keep going.
+    #       - They get bounced in a random direction.
+    #         - Then, they can land and keep going as above.
+    #       - They cannot survive the tremor.
+    #       - Maybe different heroes fall differently?
+    #         - Dwarves: downward (from air)
+    #         - Bobbits: bounce
+    #         - Elves: downward (from platform)
+    #         - Wizards:
+    #           - Aren't bothered at all?
+    #           - Only boulders and enemies?
+    #           - But are super slow (to walk, not jump, they'll need good
+    #             in-air acceleration), and take long pauses.
     # - Add shake animation.
     #   - Create a copy of the tilemap.
     #   - Give this a higher z-index.

@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://src/characters/bobbit/bobbit.gd" type="Script" id=1]
+[ext_resource path="res://src/characters/dwarf/dwarf.gd" type="Script" id=1]
 [ext_resource path="res://addons/surfacer/src/platform_graph/edge/models/movement_params.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/characters/hero_animator.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/characters/move_to_goal_behavior.tscn" type="PackedScene" id=4]
@@ -9,10 +9,10 @@
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 3, 5 )
 
-[node name="Bobbit" type="KinematicBody2D"]
+[node name="Dwarf" type="KinematicBody2D"]
 collision_layer = 2
 script = ExtResource( 1 )
-character_name = "bobbit"
+character_name = "dwarf"
 primary_annotation_color = Color( 0, 0, 0, 1 )
 secondary_annotation_color = Color( 1, 1, 1, 1 )
 navigation_annotation_color_override = Color( 0, 0, 0, 1 )
@@ -48,7 +48,7 @@ shadow_item_cull_mask = 12
 
 [node name="MovementParameters" parent="." instance=ExtResource( 2 )]
 collider_shape = SubResource( 2 )
-character_name = "bobbit"
+character_name = "dwarf"
 __movement_params_identifier__ = "_"
 gravity_multiplier = 0.4
 ceiling_crawl_speed_multiplier = 1.5
@@ -127,7 +127,7 @@ animations = {
 "sprite_name": "Walk"
 }
 }
-hero_name = "bobbit"
+hero_name = "dwarf"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, -5 )

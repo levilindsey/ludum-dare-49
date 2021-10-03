@@ -1,9 +1,6 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=12 format=2]
 
-[ext_resource path="res://addons/scaffolder/src/character/scaffolder_character_animator.gd" type="Script" id=1]
-[ext_resource path="res://assets/images/characters/bobbit_running.png" type="Texture" id=2]
-[ext_resource path="res://assets/images/characters/bobbit_jump.png" type="Texture" id=3]
-[ext_resource path="res://assets/images/characters/bobbit_standing.png" type="Texture" id=5]
+[ext_resource path="res://src/characters/hero_animator.gd" type="Script" id=4]
 
 [sub_resource type="Animation" id=1]
 resource_name = "ClimbDown"
@@ -275,109 +272,48 @@ tracks/0/keys = {
 "values": [ 0, 1, 2, 3 ]
 }
 
-[node name="BobbitAnimator" type="Node2D"]
+[node name="HeroAnimator" type="Node2D"]
 z_index = 2
-script = ExtResource( 1 )
+script = ExtResource( 4 )
 __meta__ = {
 "_edit_lock_": true
-}
-animations = {
-"ClimbDown": {
-"name": "ClimbDown",
-"speed": 2.5,
-"sprite_name": "ClimbDown"
-},
-"ClimbUp": {
-"name": "ClimbUp",
-"speed": 2.5,
-"sprite_name": "ClimbUp"
-},
-"CrawlOnCeiling": {
-"name": "CrawlOnCeiling",
-"speed": 1.0,
-"sprite_name": "CrawlOnCeiling"
-},
-"JumpFall": {
-"name": "JumpFall",
-"speed": 1.0,
-"sprite_name": "JumpFall"
-},
-"JumpRise": {
-"name": "JumpRise",
-"speed": 1.0,
-"sprite_name": "JumpRise"
-},
-"RESET": {
-"name": "RESET",
-"speed": 1.0,
-"sprite_name": "RESET"
-},
-"Rest": {
-"name": "Rest",
-"speed": 1.0,
-"sprite_name": "Rest"
-},
-"RestOnCeiling": {
-"name": "RestOnCeiling",
-"speed": 1.0,
-"sprite_name": "RestOnCeiling"
-},
-"RestOnWall": {
-"name": "RestOnWall",
-"speed": 1.0,
-"sprite_name": "RestOnWall"
-},
-"Walk": {
-"name": "Walk",
-"speed": 2.5,
-"sprite_name": "Walk"
-}
 }
 
 [node name="Walk" type="Sprite" parent="."]
 visible = false
-texture = ExtResource( 2 )
 hframes = 4
 
 [node name="ClimbUp" type="Sprite" parent="."]
 visible = false
-texture = ExtResource( 5 )
 hframes = 2
 
 [node name="ClimbDown" type="Sprite" parent="."]
 visible = false
-texture = ExtResource( 5 )
 hframes = 2
 
 [node name="CrawlOnCeiling" type="Sprite" parent="."]
 visible = false
 rotation = -1.5708
-texture = ExtResource( 5 )
 hframes = 2
 
 [node name="Rest" type="Sprite" parent="."]
-texture = ExtResource( 5 )
 hframes = 4
 
 [node name="RestOnWall" type="Sprite" parent="."]
 visible = false
-texture = ExtResource( 5 )
 hframes = 2
 
 [node name="RestOnCeiling" type="Sprite" parent="."]
 visible = false
 rotation = 3.14159
 scale = Vector2( -1, 1 )
-texture = ExtResource( 5 )
 hframes = 2
 
 [node name="JumpFall" type="Sprite" parent="."]
 visible = false
-texture = ExtResource( 3 )
 
 [node name="JumpRise" type="Sprite" parent="."]
 visible = false
-texture = ExtResource( 3 )
 
 [node name="RESET" type="Sprite" parent="."]
 visible = false

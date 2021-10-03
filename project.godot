@@ -454,6 +454,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/surfacer/src/gui/platform_graph_inspector/inspector_item_controllers/dummy_controller.gd"
 }, {
+"base": "Hero",
+"class": "Dwarf",
+"language": "GDScript",
+"path": "res://src/characters/dwarf/dwarf.gd"
+}, {
 "base": "EdgeAttempt",
 "class": "Edge",
 "language": "GDScript",
@@ -623,6 +628,11 @@ _global_script_classes=[ {
 "class": "ElementAnnotator",
 "language": "GDScript",
 "path": "res://addons/scaffolder/src/annotators/element_annotator.gd"
+}, {
+"base": "Hero",
+"class": "Elf",
+"language": "GDScript",
+"path": "res://src/characters/elf/elf.gd"
 }, {
 "base": "TransientAnnotator",
 "class": "ExclamationMarkAnnotator",
@@ -828,6 +838,11 @@ _global_script_classes=[ {
 "class": "Hero",
 "language": "GDScript",
 "path": "res://src/characters/hero.gd"
+}, {
+"base": "ScaffolderCharacterAnimator",
+"class": "HeroAnimator",
+"language": "GDScript",
+"path": "res://src/characters/hero_animator.gd"
 }, {
 "base": "VBoxContainer",
 "class": "HeroIndicators",
@@ -2104,6 +2119,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/scaffolder/src/gui/control_rows/settings/welcome_panel_control_row.gd"
 }, {
+"base": "Hero",
+"class": "Wizard",
+"language": "GDScript",
+"path": "res://src/characters/wizard/wizard.gd"
+}, {
 "base": "Reference",
 "class": "_Debouncer",
 "language": "GDScript",
@@ -2219,6 +2239,7 @@ _global_script_class_icons={
 "DiscreteEdgeTrajectoryLegendItem": "",
 "DropdownControlRow": "",
 "DummyItemController": "",
+"Dwarf": "",
 "Edge": "",
 "EdgeAnnotationElement": "",
 "EdgeAttempt": "",
@@ -2253,6 +2274,7 @@ _global_script_class_icons={
 "EdgesWithOneStepGroupItemController": "",
 "EdgesWithoutIncreasingJumpHeightGroupItemController": "",
 "ElementAnnotator": "",
+"Elf": "",
 "ExclamationMarkAnnotator": "",
 "Eye": "",
 "EyeDirection": "",
@@ -2294,6 +2316,7 @@ _global_script_class_icons={
 "HapticFeedbackControlRow": "",
 "HeaderControlRow": "",
 "Hero": "",
+"HeroAnimator": "",
 "HeroIndicators": "",
 "HighScoreControlRow": "",
 "HorizontalMovementUtils": "",
@@ -2549,6 +2572,7 @@ _global_script_class_icons={
 "WaypointValidity": "",
 "WelcomePanel": "",
 "WelcomePanelControlRow": "",
+"Wizard": "",
 "_Debouncer": "",
 "_Interval": "",
 "_Throttler": "",

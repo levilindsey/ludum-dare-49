@@ -17,6 +17,9 @@ var level_manifest := {
         scene_path = LEVELS_PATH_PREFIX + "level0.tscn",
         platform_graph_character_names = [
             "bobbit",
+            "dwarf",
+            "elf",
+            "wizard",
         ],
         tremor_cooldown_period = 4.0,
         schedule = [
@@ -24,13 +27,13 @@ var level_manifest := {
             {type = "bobbit", time = 1.0, side = "l"},
             
             {type = "wave", time = 6.0},
-            {type = "bobbit", time = 6.0, side = "r"},
-            {type = "bobbit", time = 6.0, side = "r"},
-            {type = "bobbit", time = 6.0, side = "r"},
-            {type = "bobbit", time = 6.0, side = "r"},
-            {type = "bobbit", time = 6.0, side = "r"},
-            {type = "bobbit", time = 6.0, side = "l"},
-            {type = "bobbit", time = 6.0, side = "l"},
+            {type = "bobbit", time = 6.1, side = "r"},
+            {type = "bobbit", time = 6.2, side = "l"},
+            {type = "bobbit", time = 6.3, side = "r"},
+            {type = "wizard", time = 6.4, side = "r"},
+            {type = "bobbit", time = 6.5, side = "r"},
+            {type = "dwarf", time = 6.6, side = "l"},
+            {type = "elf", time = 6.7, side = "l"},
         ],
     },
 #    "1": {
