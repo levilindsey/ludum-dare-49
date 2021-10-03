@@ -10,13 +10,14 @@ const _KNOCK_OFF_FALL_DISTANCE_THRESHOLD := 64.0
 const _FADE_OUT_DURATION := 1.0
 const _FADE_OUT_DELAY := 1.0
 
-const _BOUNCE_MAGNITUDE := 500.0
+const _BOUNCE_MAGNITUDE := 450.0
+const _BOUNCE_MAGNITUDE_MAX_OFFSET := 150.0
 const _BOUNCE_ANGLE := -PI / 3.0
+const _BOUNCE_ANGLE_MAX_OFFSET := PI / 9.0
 
-var _BOUNCE_NORMAL_RIGHT := Vector2.RIGHT.rotated(_BOUNCE_ANGLE)
-var _BOUNCE_NORMAL_LEFT := _BOUNCE_NORMAL_RIGHT.reflect(Vector2.UP)
-var _BOUNCE_BOOST_RIGHT := _BOUNCE_NORMAL_RIGHT * _BOUNCE_MAGNITUDE
-var _BOUNCE_BOOST_LEFT := _BOUNCE_NORMAL_LEFT * _BOUNCE_MAGNITUDE
+const _BOUNCE_MAGNITUDE_MAX_OFFSET_FOR_HEIGHT := 150.0
+const _BOUNCE_MAGNITUDE_MAX_OFFSET_FOR_HEIGHT_MIN_HEIGHT := 192.0
+const _BOUNCE_MAGNITUDE_MAX_OFFSET_FOR_HEIGHT_MAX_HEIGHT := -128.0
 
 var is_falling := false
 var is_knocked_off := false
@@ -59,23 +60,54 @@ func _process_animation() -> void:
 
 
 func on_tremor() -> void:
+    _fall()
+
+
+func _fall() -> void:
     if is_falling:
         return
     
     is_falling = true
-    current_max_horizontal_speed = _BOUNCE_MAGNITUDE
+    
+    var bounce_magnitude_height_offset_progress := clamp(
+            (_BOUNCE_MAGNITUDE_MAX_OFFSET_FOR_HEIGHT_MIN_HEIGHT - \
+                self.position.y) / \
+            (_BOUNCE_MAGNITUDE_MAX_OFFSET_FOR_HEIGHT_MIN_HEIGHT - \
+                _BOUNCE_MAGNITUDE_MAX_OFFSET_FOR_HEIGHT_MAX_HEIGHT),
+            0.0,
+            1.0)
+    var bounce_magnitude_height_offset := \
+            _BOUNCE_MAGNITUDE_MAX_OFFSET_FOR_HEIGHT * \
+            bounce_magnitude_height_offset_progress
+    var bounce_magnitude_random_offset := \
+            randf() * _BOUNCE_MAGNITUDE_MAX_OFFSET
+    var bounce_magnitude := \
+            _BOUNCE_MAGNITUDE + \
+            bounce_magnitude_height_offset + \
+            bounce_magnitude_random_offset
+    
+    var bounce_angle := \
+            _BOUNCE_ANGLE - \
+            randf() * _BOUNCE_ANGLE_MAX_OFFSET
+    
+    var bounce_normal_right := Vector2.RIGHT.rotated(bounce_angle)
+    var bounce_normal_left := bounce_normal_right.reflect(Vector2.UP)
+    var bounce_boost_right := bounce_normal_right * bounce_magnitude
+    var bounce_boost_left := bounce_normal_left * bounce_magnitude
+    
+    current_max_horizontal_speed = bounce_magnitude
     
     var boost: Vector2
     if !surface_state.is_grabbing_surface:
         if velocity.x < 0:
-            boost = _BOUNCE_BOOST_RIGHT
+            boost = bounce_boost_right
         else:
-            boost = _BOUNCE_BOOST_LEFT
+            boost = bounce_boost_left
     else:
         if randf() > 0.5:
-            boost = _BOUNCE_BOOST_LEFT
+            boost = bounce_boost_left
         else:
-            boost = _BOUNCE_BOOST_RIGHT
+            boost = bounce_boost_right
     
     force_boost(boost)
     

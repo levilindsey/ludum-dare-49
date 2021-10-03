@@ -21,7 +21,7 @@ var level_manifest := {
             "elf",
             "wizard",
         ],
-        tremor_cooldown_period = 4.0,
+        tremor_cooldown_period = 6.0,
         schedule = [
             {type = "wave", time = 1.0},
             {type = "bobbit", time = 1.0, side = "l"},

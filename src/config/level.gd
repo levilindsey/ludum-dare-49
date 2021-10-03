@@ -395,15 +395,18 @@ func trigger_tremor() -> void:
     pass
     
     
-    
-    for character_list in characters.values():
-        for character in character_list:
-            character.on_tremor()
-    
-    shaker.shake(mountain_container)
+    shaker.shake(mountain_container, 0.5)
+    Sc.time.set_timeout(funcref(self, "_trigger_delayed_tremor"), 0.4)
     
     session.last_tremor_time = Sc.time.get_scaled_play_time()
     Sc.gui.hud.control_buttons.set_button_enabled("tremor", false)
+
+
+func _trigger_delayed_tremor() -> void:
+    for character_list in characters.values():
+        for character in character_list:
+            character.on_tremor()
+    shaker.shake(mountain_container)
 
 
 func trigger_boulder_selection_mode() -> void:

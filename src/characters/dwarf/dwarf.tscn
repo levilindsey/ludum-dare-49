@@ -14,24 +14,6 @@ extents = Vector2( 3, 5 )
 collision_layer = 8
 script = ExtResource( 1 )
 character_name = "dwarf"
-primary_annotation_color = Color( 0.54902, 0.588235, 0.611765, 1 )
-secondary_annotation_color = Color( 0.560784, 0.337255, 0.231373, 1 )
-navigation_annotation_color_override = Color( 0, 0, 0, 1 )
-position_annotation_color_override = Color( 0, 0, 0, 1 )
-exclamation_mark_width_start = 1.0
-exclamation_mark_length_start = 6.0
-exclamation_mark_stroke_width_start = 1.2
-exclamation_mark_duration = 0.9
-exclamation_mark_throttle_interval = 1.0
-logs_common_debugging_events = false
-logs_custom_events = true
-logs_behavior_events = false
-logs_navigator_events = false
-logs_collision_events = false
-logs_surface_events = false
-logs_action_events = false
-logs_verbose_events = false
-logs_verbose_navigator_events = false
 
 [node name="Glow" type="Light2D" parent="."]
 visible = false
