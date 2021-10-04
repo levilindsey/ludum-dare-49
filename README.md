@@ -7,7 +7,7 @@
 </p>
 
 
--   **[Play the game!](https://levi.dev/ludum-dare-49)**
+-   **[Play the game!](https://levilindsey.itch.io/the-eye-of-mount-glower-on)**
 -   **[Watch the gameplay](https://youtu.be/PsbyLwgKQr0)**
 -   **[See the game-jam ratings](https://ldjam.com/events/ludum-dare/49/ludum-dare-49)**
 
