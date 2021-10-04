@@ -1,14 +1,19 @@
 # Ludum Dare 49
 
-> TODO: Add a cover image.
 
-> _**[Play the game!](https://levi.dev/ludum-dare-49)**_
+<p align="center">
+  <img src="assets/images/cover.png"
+       alt="A cover image.">
+</p>
 
-_TODO: Game plot description / call-to-action_
 
-TODO: Game technical description
+-   **[Play the game!](https://levi.dev/ludum-dare-49)**
+-   **[Watch the gameplay](https://youtu.be/PsbyLwgKQr0)**
+-   **[See the game-jam ratings](https://ldjam.com/events/ludum-dare/49/ludum-dare-49)**
 
-TODO: Search/replace all instances of bootstrap with the app name.
+_In this point-and-click game, you control the vast power of an unstable mountain._
+
+> The heroes of the land aim to ascend **Mount Oh No** to destroy the vessel of your vast power! You must CRUSH THEM! And send them flying! They will FEEL YOUR ANGER!! They think they can scale Mount Oh No?? Not while **The Eye of Glower-On** is watching!
 
 ## The jam
 
@@ -21,9 +26,15 @@ Additionally, the games all follow some central theme, which is only announced a
 
 I worked solo and created everything during the event. Except of course for my Scaffolder and Surfacer frameworks (which is fine, you're allowed to use pre-existing code).
 
-### The theme
+### How the game fits the theme
 
-> TODO: Describe the theme and how my game fits it.
+The mountain is unstable! You use frequent earthquakes and falling boulders to stop those pesky heroes in their tracks!
+
+## Controls
+
+Tap, tappity, tap tap!
+
+Mouse or touch!
 
 ## Software used
 
@@ -50,7 +61,6 @@ To learn more about how the code works, checkout the [Surfacer](https://github.c
     -   [addons/surfacer/src/config/surfacer_third_party_licenses.gd](https://github.com/SnoringCatGames/surfacer/blob/master/src/config/surfacer_third_party_licenses.gd)
     -   [src/config/third_party_licenses.gd](./src/config/third_party_licenses.gd)
 
-> TODO: Add a loading GIF.
 
 <p align="center">
   <img src="assets/images/gui/loading.gif"
