@@ -12,11 +12,14 @@ func _ready() -> void:
     $EncounterBehavior.max_encounter_count = MAX_ENCOUNTER_COUNT
 
 
+
 # FIXME: Fix this hack.
 var interval := Sc.time.set_interval(funcref(self, "_check_behavior"), 2.0)
+
 func _destroy() -> void:
     Sc.time.clear_interval(interval)
     ._destroy()
+
 func _check_behavior() -> void:
     if !surface_state.did_move_last_frame and \
             !surface_state.did_move_frame_before_last and \
@@ -24,6 +27,8 @@ func _check_behavior() -> void:
             !is_knocked_off and \
             !_is_destroyed:
         trigger_move()
+
+
 
 
 func trigger_move() -> void:
@@ -40,14 +45,15 @@ func _physics_process(_delta: float) -> void:
         return
     
     if _is_destroyed or \
-            !is_instance_valid(behavior):
+            !is_instance_valid(behavior) or \
+            !is_instance_valid(Sc.level.ring_bearer):
         return
-    
-    if behavior.behavior_name == "collide" and \
-            !is_instance_valid(Sc.level.ring_bearer) and \
-            Sc.level.ring_bearer.behavior_name == "move_to_goal":
-        var current_distance_squared := \
-                position.distance_squared_to(Sc.level.ring_bearer.position)
-        if current_distance_squared <= \
-                TRIGGER_ENCOUNTER_DISTANCE_SQUARED_THRESHOLD:
-            trigger_encounter(Sc.level.ring_bearer)
+ 
+        # FIXME: ---------- The EncounterBehavior system is broken right now.
+#    if behavior.behavior_name == "collide" and \
+#            Sc.level.ring_bearer.behavior.behavior_name == "move_to_goal":
+#        var current_distance_squared := \
+#                position.distance_squared_to(Sc.level.ring_bearer.position)
+#        if current_distance_squared <= \
+#                TRIGGER_ENCOUNTER_DISTANCE_SQUARED_THRESHOLD:
+#            trigger_encounter(Sc.level.ring_bearer)

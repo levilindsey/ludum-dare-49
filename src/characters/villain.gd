@@ -16,6 +16,11 @@ func _on_started_colliding(
         layer_names: Array) -> void:
     ._on_started_colliding(target, layer_names)
     
+    if Su.is_precomputing_platform_graphs or \
+            Sc.level_session._is_destroyed or \
+            _is_destroyed:
+        return
+    
     # FIXME: --------------- Old attempt.
 #    if behavior.behavior_name == "encounter" and \
 #            behavior.move_target == target:
@@ -36,7 +41,10 @@ func _on_started_colliding(
     var self_encounter_behavior: EncounterBehavior = \
             self.get_behavior(EncounterBehavior)
     
-    if target is Hero:
+    if is_instance_valid(target) and \
+            target is Hero and \
+            !target.is_falling and \
+            !target.is_knocked_off:
         var target_encounter_behavior: EncounterBehavior = \
                 target.get_behavior(EncounterBehavior)
         
