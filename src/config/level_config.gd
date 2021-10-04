@@ -33,6 +33,8 @@ var level_manifest := {
 #            {type = "wave", time = 6.0},
 
             {type = "bobbit", time = 30.1, side = "l"},
+            {type = "bobbit", time = 31.5, side = "l"},
+            {type = "dwarf", time = 38.6, side = "r"},
             {type = "dwarf", time = 45.6, side = "r"},
             {type = "elf", time = 34.7, side = "r"},
             {type = "elf", time = 51.7, side = "l"},
@@ -43,6 +45,7 @@ var level_manifest := {
             {type = "elf", time = 60.7, side = "l"},
             {type = "dwarf", time = 61.7, side = "r"},
             {type = "elf", time = 63.7, side = "r"},
+            {type = "dwarf", time = 65.7, side = "r"},
             {type = "dwarf", time = 66.7, side = "l"},
             {type = "elf", time = 67.7, side = "l"},
             
@@ -52,6 +55,7 @@ var level_manifest := {
             {type = "elf",    time = 68, side = "l"},
             {type = "dwarf",  time = 69, side = "r"},
             {type = "elf",    time = 71, side = "r"},
+            {type = "dwarf",  time = 73, side = "r"},
             {type = "dwarf",  time = 74, side = "l"},
             {type = "elf",    time = 75, side = "l"},
 
@@ -79,8 +83,10 @@ var level_manifest := {
 
             {type = "bobbit", time = 84, side = "l"},
             {type = "bobbit", time = 88, side = "l"},
+            {type = "dwarf",  time = 92, side = "r"},
             {type = "dwarf",  time = 96, side = "l"},
             {type = "dwarf",  time = 100, side = "r"},
+            {type = "elf",    time = 97, side = "r"},
             {type = "elf",    time = 93, side = "r"},
         ],
     },
@@ -104,6 +110,7 @@ var level_manifest := {
 
             {type = "bobbit", time = 2.0, side = "l"},
             {type = "bobbit", time = 16.0, side = "l"},
+            {type = "bobbit", time = 20.0, side = "l"},
             {type = "bobbit", time = 22.0, side = "l"},
             {type = "bobbit", time = 23.0, side = "l"},
             
@@ -118,20 +125,28 @@ var level_manifest := {
             
             {type = "orc", time = 30.7},
             {type = "orc", time = 60.7},
+            {type = "orc", time = 80.7},
             
             {type = "elf", time = 60.7, side = "l"},
             {type = "dwarf", time = 61.7, side = "r"},
+            {type = "wizard", time = 62.7, side = "l"},
+            {type = "elf", time = 64.7, side = "r"},
+            {type = "dwarf", time = 65.7, side = "r"},
             {type = "elf", time = 67.7, side = "l"},
             
             {type = "orc",    time = 90},
+            {type = "orc",    time = 1},
             {type = "orc",    time = 70},
             
             {type = "elf",    time = 68, side = "l"},
             {type = "dwarf",  time = 69, side = "r"},
             {type = "wizard",  time = 70, side = "l"},
+            {type = "elf",    time = 72, side = "r"},
             {type = "dwarf",  time = 74, side = "l"},
             {type = "elf",    time = 75, side = "l"},
 
+            {type = "boulder", time = 1},
+            {type = "boulder", time = 20},
             {type = "boulder", time = 85.7},
             {type = "boulder", time = 10.7},
 
@@ -178,17 +193,21 @@ var level_manifest := {
 
             {type = "bobbit", time = 2.0, side = "l"},
             {type = "bobbit", time = 16.0, side = "l"},
+            {type = "bobbit", time = 20.0, side = "l"},
             {type = "bobbit", time = 22.0, side = "l"},
             {type = "bobbit", time = 23.0, side = "l"},
             
 #            {type = "wave", time = 6.0},
 
             {type = "bobbit", time = 30.1, side = "l"},
+            {type = "bobbit", time = 31.5, side = "l"},
             {type = "wizard", time = 33.6, side = "r"},
             {type = "dwarf", time = 38.6, side = "r"},
+            {type = "elf", time = 34.7, side = "r"},
             {type = "elf", time = 51.7, side = "l"},
             
             {type = "orc", time = 60.7},
+            {type = "orc", time = 80.7},
             
             {type = "elf", time = 60.7, side = "l"},
             {type = "dwarf", time = 61.7, side = "r"},
@@ -198,6 +217,7 @@ var level_manifest := {
             {type = "elf", time = 67.7, side = "l"},
             
             {type = "orc",    time = 90},
+            {type = "orc",    time = 1},
             {type = "orc",    time = 70},
             
             {type = "elf",    time = 68, side = "l"},
@@ -205,13 +225,17 @@ var level_manifest := {
             {type = "wizard",  time = 70, side = "l"},
             {type = "elf",    time = 71, side = "r"},
             {type = "dwarf",  time = 73, side = "r"},
+            {type = "elf",    time = 75, side = "l"},
 
             {type = "boulder", time = 2},
             {type = "boulder", time = 30.7},
+            {type = "boulder", time = 1},
+            {type = "boulder", time = 20},
             {type = "boulder", time = 85.7},
             
             {type = "baldrock", time = 15.7},
             {type = "baldrock", time = 40.7},
+            {type = "baldrock", time = 8},
             {type = "baldrock", time = 80.7},
 
             {type = "bobbit", time = 77, side = "r"},
@@ -236,8 +260,10 @@ var level_manifest := {
             {type = "wizard", time = 84, side = "l"},
             {type = "bobbit", time = 88, side = "l"},
             {type = "dwarf",  time = 92, side = "r"},
+            {type = "dwarf",  time = 96, side = "l"},
             {type = "dwarf",  time = 100, side = "r"},
             {type = "elf",    time = 97, side = "r"},
+            {type = "elf",    time = 93, side = "r"},
         ],
     },
 }

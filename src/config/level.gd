@@ -155,7 +155,7 @@ func _physics_process(_delta: float) -> void:
             Sc.level_session._is_destroyed:
         return
     
-    var current_time: float = Sc.time.get_scaled_play_time()
+    var current_time := session.level_play_time_scaled
     
     if !session._is_hero_spawning_finished:
         session._next_bobbit_spawn_index = _flush_schedule(
@@ -524,7 +524,7 @@ func trigger_tremor() -> void:
     
     
     session.is_tremor_ready = false
-    session.last_tremor_time = Sc.time.get_scaled_play_time()
+    session.last_tremor_time = session.level_play_time_scaled
     Sc.gui.hud.control_buttons.set_button_enabled("tremor", false)
     
     is_in_boulder_selection_mode = false
