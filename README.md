@@ -2,7 +2,7 @@
 
 
 <p align="center">
-  <img src="assets/images/cover.png"
+  <img src="assets/images/animated_cover.gif"
        alt="A cover image.">
 </p>
 
@@ -25,6 +25,13 @@ Ludum Dare is a semi-annual event where people create a game over the weekend. L
 Additionally, the games all follow some central theme, which is only announced at the start of the jam.
 
 I worked solo and created everything during the event. Except of course for my Scaffolder and Surfacer frameworks (which is fine, you're allowed to use pre-existing code).
+
+
+<p align="center">
+  <img src="assets/images/characters_demo.gif"
+       alt="The various characters.">
+</p>
+
 
 ### How the game fits the theme
 
