@@ -9,6 +9,7 @@
 
 -   **[Play the game!](https://levilindsey.itch.io/the-eye-of-mount-glower-on)**
 -   **[Watch the gameplay](https://youtu.be/PsbyLwgKQr0)**
+-   **[Watch this let's-play video from a stranger on the Internet!](https://www.youtube.com/watch?v=bv0djyPlHwQ)**
 -   **[See the game-jam ratings](https://ldjam.com/events/ludum-dare/49/ludum-dare-49)**
 
 _In this point-and-click game, you control the vast power of an unstable mountain._
